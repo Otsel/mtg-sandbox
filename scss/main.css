@@ -1,11 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Playwrite+HR+Lijeva:wght@100..400&display=swap");
 .mainMenu {
   width: 100vw;
   height: 100vh;
 }
 
+.mainMenu .menuContainer {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .mainMenu .menuContainer card {
-  padding: 20px;
+  padding: 100px 30px 100px 30px;
+  margin: 0px 20px 0px 20px;
   border-radius: 20px;
   border-color: #ffffff;
-  border-width: 20px;
+  border-width: 5px;
+  border-style: solid;
+  text-align: center;
+  font-family: "Bona Nova SC", serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #ffffff;
+}
+
+.mainMenu .menuContainer card:hover {
+  background-color: #ffffff;
+  color: #216094;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */
