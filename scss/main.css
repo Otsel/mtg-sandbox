@@ -1,0 +1,11 @@
+.mainMenu {
+  width: 100vw;
+  height: 100vh;
+}
+
+.mainMenu .menuContainer card {
+  padding: 20px;
+  border-radius: 20px;
+  border-color: #ffffff;
+  border-width: 20px;
+}/*# sourceMappingURL=main.css.map */
