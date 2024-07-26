@@ -3,7 +3,7 @@
     "version": "0.0.2",
     "author": "Aaron Sonder <sonderaaron@gmail.com>",
     "scripts":{
-        "dev": "browser-sync start --server --files 'scss/*.css'"
+        "dev": "browser-sync start --server --files 'src/styles/*.css' 'src/js/main.js' '*.html'"
     },
     "repository": {
         "type": "git",

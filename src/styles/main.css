@@ -20,14 +20,24 @@ h1 {
 @keyframes flip {
   0% {
     opacity: 0;
-    padding: 120px 0;
-    margin: 0 50px;
+    padding: 20px 0;
+    margin: 0 80px;
     pointer-events: none;
   }
   100% {
     opacity: 1;
-    padding: 120px 30px;
+    padding: 20px 60px;
     margin: 0 20px;
+  }
+}
+@keyframes titleflip {
+  0% {
+    opacity: 0;
+    padding: 60px 0;
+  }
+  100% {
+    opacity: 1;
+    padding: 60px 20px;
   }
 }
 *.unselectable {
@@ -62,8 +72,10 @@ h1 {
 .mainMenu .menuContainer .card {
   opacity: 0;
   position: relative;
-  padding: 120px 30px;
-  margin: 0px 20px 0px 20px;
+  width: 150px;
+  height: 300px;
+  padding: 20px 60px;
+  margin: 0px 20px;
   min-width: 150px;
   border-radius: 20px;
   border-color: #ffffff;
@@ -71,10 +83,6 @@ h1 {
   border-style: solid;
   text-align: center;
   text-wrap: wrap;
-  font-family: "Bona Nova SC", serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 28px;
   color: #ffffff;
   transition: 0.4s;
 }
@@ -82,8 +90,35 @@ h1 {
   background-color: #ffffff;
   color: #216094;
   cursor: pointer;
-  padding: 130px 40px;
+  padding: 30px 70px;
   transition: 0.4s;
+}
+.mainMenu .menuContainer .card:hover .title {
+  color: #216094;
+  transition: 0.4s;
+}
+.mainMenu .menuContainer .card .title {
+  font-family: "Bona Nova SC", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 28px;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 60px 20px;
+  margin: 0 -26%;
+  width: 120%;
+}
+.mainMenu .menuContainer .card .description {
+  font-family: "Bona Nova SC", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .mainMenu .menuContainer #card1 {
   animation: float 2s infinite ease-in-out 1s, flip 1s 1 ease 0.5s;
@@ -93,4 +128,13 @@ h1 {
 }
 .mainMenu .menuContainer #card3 {
   animation: float 2s infinite ease-in-out 2s, flip 1s 1 ease 1.5s;
+}
+.mainMenu .menuContainer #title1 {
+  animation: titleflip 1s 1 ease 0.5s;
+}
+.mainMenu .menuContainer #title2 {
+  animation: titleflip 1s 1 ease 1s;
+}
+.mainMenu .menuContainer #title3 {
+  animation: titleflip 1s 1 ease 1.5s;
 }/*# sourceMappingURL=main.css.map */

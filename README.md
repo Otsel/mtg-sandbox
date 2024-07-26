@@ -6,7 +6,6 @@ A modernized Magic: the Gathering play-testing environment!
 MTG:Sandbox runs using browser-sync. Install with:
 ```
 npm install browser-sync
-
 ```
 
 Or to run globally,

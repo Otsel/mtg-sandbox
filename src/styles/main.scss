@@ -19,8 +19,13 @@ h1 {
 }
 
 @keyframes flip {
-    0% {opacity: 0; padding: 120px 0; margin: 0 50px; pointer-events: none;}
-    100% {opacity: 1; padding:120px 30px; margin: 0 20px;}
+    0% {opacity: 0; padding: 20px 0; margin: 0 80px; pointer-events: none;}
+    100% {opacity: 1; padding:20px 60px; margin: 0 20px;}
+}
+
+@keyframes titleflip {
+    0% {opacity: 0; padding: 60px 0;}
+    100% {opacity: 1; padding:60px 20px;}
 }
 
 // modular classes
@@ -67,8 +72,10 @@ h1 {
         .card {
             opacity: 0;
             position: relative;
-            padding: 120px 30px;
-            margin: 0px 20px 0px 20px;
+            width: 150px;
+            height: 300px;
+            padding: 20px 60px;
+            margin: 0px 20px;
             min-width: 150px;
             border-radius: 20px;
             border-color: #ffffff;
@@ -76,27 +83,53 @@ h1 {
             border-style: solid;
             text-align: center;
             text-wrap: wrap;
-            font-family: "Bona Nova SC", serif;
-            font-weight: 700;
-            font-style: normal;
-            font-size: 28px;
             color:#ffffff;
             transition: .4s;
-            // animation: float 2s infinite ease-in-out, flip 1s 1;
-            // animation-duration: 2s;
-            // animation-iteration-count: infinite;
-            // animation-timing-function: ease-in-out;
             &:hover{
                 background-color:#ffffff;
                 color: #216094;
                 cursor: pointer;
-                padding: 130px 40px;
+                padding: 30px 70px;
                 transition: .4s;
+
+                .title{
+                    // border-color:#216094;
+                    color: #216094;
+                    transition: .4s;
+                }
+            }
+            .title{
+                font-family: "Bona Nova SC", serif;
+                font-weight: 700;
+                font-style: normal;
+                font-size: 28px;
+                border-color: #ffffff;
+                border-width: 5px;
+                border-style: solid;
+                border-radius: 10px;
+                padding: 60px 20px;
+                //this is so jank please fix it later;
+                margin: 0 -26%;
+                width: 120%;
+            }
+            .description {
+                font-family: "Bona Nova SC", serif;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 18px;
+                position: absolute;
+                top: 70%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
             }
         }
         #card1{animation: float 2s infinite ease-in-out 1s, flip 1s 1 ease .5s;}
         #card2{animation: float 2s infinite ease-in-out 1.5s, flip 1s 1 ease 1s;}
         #card3{animation: float 2s infinite ease-in-out 2s, flip 1s 1 ease 1.5s;}
+        #title1{animation: titleflip 1s 1 ease .5s;}
+        #title2{animation: titleflip 1s 1 ease 1s;}
+        #title3{animation: titleflip 1s 1 ease 1.5s;}
     }
 }
 
