@@ -2,12 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Playwrite+HR+Lijeva:wght@100..400&display=swap');
 
 // typography
+
 h1 {
     font-family: "Bona Nova SC", serif;
     font-weight: 700;
     font-size: 8em;
     color: #ffffff;
 }
+
 // animations
 
 @keyframes float{
@@ -20,6 +22,7 @@ h1 {
     0% {opacity: 0; padding: 120px 0;}
     100% {opacity: 1; padding:120px 30px;}
 }
+
 //  |  \/  |     (_)       |  \/  |                 
 //  | \  / | __ _ _ _ __   | \  / | ___ _ __  _   _ 
 //  | |\/| |/ _` | | '_ \  | |\/| |/ _ \ '_ \| | | |
