@@ -4,6 +4,11 @@
   height: 100%;
 }
 
+.mainMenu a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .mainMenu .menuContainer {
   margin: 0;
   position: absolute;
