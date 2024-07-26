@@ -23,4 +23,4 @@ This runs a script called "dev", which can be found in package.json, which opens
 
 ## How to edit stylesheets
 
-MTG:Sandbox is precompiled in SCSS for efficiency, so you'll need to compile `src/styles/main.scss' locally using your plugin of choice. Sorry! ┐(￣ヮ￣)┌
+MTG:Sandbox is precompiled in SCSS for efficiency, so you'll need to compile `src/styles/main.scss` locally using your plugin of choice. Sorry! ┐(￣ヮ￣)┌
