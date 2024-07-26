@@ -19,9 +19,24 @@ h1 {
 }
 
 @keyframes flip {
-    0% {opacity: 0; padding: 120px 0;}
-    100% {opacity: 1; padding:120px 30px;}
+    0% {opacity: 0; padding: 120px 0; margin: 0 50px; pointer-events: none;}
+    100% {opacity: 1; padding:120px 30px; margin: 0 20px;}
 }
+
+// modular classes
+
+*.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+ 
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+ }
 
 //  |  \/  |     (_)       |  \/  |                 
 //  | \  / | __ _ _ _ __   | \  / | ___ _ __  _   _ 
