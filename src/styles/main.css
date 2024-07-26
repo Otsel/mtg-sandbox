@@ -44,11 +44,14 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
 }
-.mainMenu .menuContainer card {
+.mainMenu .menuContainer .card {
+  opacity: 0;
   position: relative;
   padding: 120px 30px;
   margin: 0px 20px 0px 20px;
+  min-width: 150px;
   border-radius: 20px;
   border-color: #ffffff;
   border-width: 5px;
@@ -60,10 +63,21 @@ h1 {
   font-style: normal;
   font-size: 28px;
   color: #ffffff;
-  animation: float 2s infinite ease-in-out, flip 1s 1;
+  transition: 0.4s;
 }
-.mainMenu .menuContainer card:hover {
+.mainMenu .menuContainer .card:hover {
   background-color: #ffffff;
   color: #216094;
   cursor: pointer;
+  padding: 130px 40px;
+  transition: 0.4s;
+}
+.mainMenu .menuContainer #card1 {
+  animation: float 2s infinite ease-in-out 1s, flip 1s 1 ease 0.5s;
+}
+.mainMenu .menuContainer #card2 {
+  animation: float 2s infinite ease-in-out 1.5s, flip 1s 1 ease 1s;
+}
+.mainMenu .menuContainer #card3 {
+  animation: float 2s infinite ease-in-out 2s, flip 1s 1 ease 1.5s;
 }/*# sourceMappingURL=main.css.map */
