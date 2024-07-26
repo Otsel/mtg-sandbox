@@ -1,0 +1,12 @@
+{
+    "name": "mtg-sandbox",
+    "version": "0.0.2",
+    "author": "Aaron Sonder <sonderaaron@gmail.com>",
+    "scripts":{
+        "dev": "browser-sync start --server --files 'scss/*.css'"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Otsel/mtg-sandbox.git"
+    }
+}
