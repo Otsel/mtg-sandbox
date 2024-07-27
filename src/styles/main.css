@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Playwrite+HR+Lijeva:wght@100..400&display=swap");
+body {
+  overflow: hidden;
+}
+
 h1 {
   font-family: "Bona Nova SC", serif;
   font-weight: 700;
@@ -174,4 +178,24 @@ h1 {
   box-shadow: var(--shadow-elevation-high);
   transform: rotateX(0deg);
   transition: height 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.playingCard .inHand {
+  height: 500px;
+}
+
+.playerHand {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.playerHand :nth-child(2n) {
+  bottom: 20px;
+}
+.playerHand .playingCard {
+  transform: none;
+  margin-left: -50px;
+}
+.playerHand .playingCard:hover {
+  z-index: 1;
 }/*# sourceMappingURL=main.css.map */

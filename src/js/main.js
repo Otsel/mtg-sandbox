@@ -15,5 +15,8 @@ $('.card').each(function(){
 //make cards draggable
 
 $('.playingCard').draggable();
+$('.playerHand').droppable({
+    accept: ".playingCard"
+});
 
 })(jQuery);
