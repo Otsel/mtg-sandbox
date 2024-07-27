@@ -14,9 +14,14 @@ $('.card').each(function(){
 
 //make cards draggable
 
-$('.playingCard').draggable();
+$('.playingCard').draggable({containment:"body", scroll: false});
+// $('.playingCard').draggable();
 $('.playerHand').droppable({
-    accept: ".playingCard"
+    // accept: ".playingCard"
+    drop: function( event, ui ) {
+        $(this).toggleClass( "in-hand" );
+        console.log("plop");
+    }
 });
 
 })(jQuery);
