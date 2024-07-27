@@ -14,6 +14,11 @@ $('.card').each(function(){
 
 //make cards draggable
 
+//drop the card on release
+// $('.playingCard').on("mouseup", function(){
+//     $(this).css("height", "200px");
+// });
+
 $('.playingCard').draggable({containment:"body", scroll: false});
 // $('.playingCard').draggable();
 $('.playerHand').droppable({
