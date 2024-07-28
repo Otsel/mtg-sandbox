@@ -325,9 +325,20 @@ p {
     width: auto;
     border-radius: 5px;
     box-shadow: var(--shadow-elevation-medium);
+    cursor: grab;
     // transform:rotateX(-45deg);
     transition: height .2s, box-shadow .2s, transform .2s;
-
+    //make unselectable
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+ 
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
 
     &:hover {
         height: 250px;

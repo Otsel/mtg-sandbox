@@ -313,7 +313,15 @@ p {
   width: auto;
   border-radius: 5px;
   box-shadow: var(--shadow-elevation-medium);
+  cursor: grab;
   transition: height 0.2s, box-shadow 0.2s, transform 0.2s;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  /*
+    Introduced in IE 10.
+    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+  */
+  user-select: none;
 }
 .playingCard:hover {
   height: 250px;
