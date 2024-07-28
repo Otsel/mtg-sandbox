@@ -320,6 +320,7 @@ p {
 
 .playingCard {
     position: absolute;
+    z-index: 1;
     height: 200px;
     width: auto;
     border-radius: 5px;
@@ -330,6 +331,7 @@ p {
 
     &:hover {
         height: 250px;
+        z-index: 2;
         box-shadow: var(--shadow-elevation-high);
         transform:rotateX(0deg);
         transition: height .2s, box-shadow .2s, transform .2s;
@@ -409,18 +411,20 @@ p {
 }
 
 .playerHand {
+    
     position: absolute;
     bottom: -20px;
     left: 50%;
     transform:translateX(-50%);
     :nth-child(2n) {
         bottom: 20px;
+        z-index: 3;
       }
     .playingCard{
         transform:none;
         margin-left:-50px;
         &:hover{
-            z-index: 1;
+            z-index: 4;
         }
     }
 }
