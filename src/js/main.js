@@ -12,6 +12,11 @@ $('.card').each(function(){
     }, 1500);
 });
 
+//Game functions
+
+var cardCount = 100;
+$('.cardCounter').html(cardCount);
+
 
 //UI actions
 
@@ -36,6 +41,8 @@ $('#menuItem2').on('click', function(){
     var statusMessage = "<div class='status' "+"id='"+statusID+"'>you drew 7 cards</div>";
     console.log(statusMessage);
     console.log(statusTarget);
+    cardCount-=7;
+    $('.cardCounter').html(cardCount);
     if (statusCounter == 5) {
         $(".status").remove();
         $('.statusContainer').prepend(statusMessage);
@@ -55,6 +62,8 @@ $('#menuItem3').on('click', function(){
     var statusMessage = "<div class='status' "+"id='"+statusID+"'>you drew 1 card</div>";
     console.log(statusMessage);
     console.log(statusTarget);
+    cardCount--;
+    $('.cardCounter').html(cardCount);
     if (statusCounter == 5) {
         $(".status").remove();
         $('.statusContainer').prepend(statusMessage);
@@ -71,11 +80,33 @@ $('.playingCard').hover(function(){
     var $this = $(this);
     $(document).keydown(function(keyPressed) {
         if (keyPressed.keyCode == 82) {
-            console.log("you pressed the R key");
             $this.toggleClass('tapped');
         }
     });
 });
+
+//rotate cards
+$('.playingCard').hover(function(){
+    var $this = $(this);
+    $(document).keydown(function(keyPressed) {
+        if (keyPressed.keyCode == 70) {
+            console.log("you pressed the F key");
+            $this.addClass('flipping');
+            setTimeout(function() { 
+                $this.removeClass('flipping');
+            }, 500);
+        }
+    });
+});
+
+//deck functions
+$('.deck').mouseenter(function(){
+    $('.cardCounter').css("opacity", "1");
+})
+
+$('.deck').mouseleave(function(){
+    $('.cardCounter').css("opacity", "0");
+})
 
 //make cards draggable
 
@@ -88,8 +119,8 @@ $('.playingCard').draggable({
     containment:"body", 
     scroll: false,
     drag: function (event, ui) {
-        $(this).toggleClass( "in-hand" );
-        $(this).css("z-index", "1");
+        // $(this).toggleClass( "dragging" );
+        // $(this).css("z-index", "1000");
     }
 });
 // $('.playingCard').draggable();
