@@ -85,6 +85,10 @@ p {
   user-select: none;
 }
 
+.tapped {
+  transform: rotate(90deg);
+}
+
 .topMenu .tooltip {
   opacity: 0;
   width: -moz-max-content;
@@ -254,7 +258,6 @@ p {
   width: auto;
   border-radius: 5px;
   box-shadow: var(--shadow-elevation-medium);
-  transform: rotateX(-45deg);
   transition: height 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .playingCard:hover {

@@ -79,6 +79,10 @@ p {
     user-select: none;
  }
 
+ .tapped {
+    transform: rotate(90deg);
+ }
+
  //UI
 .topMenu {
     .tooltip {
@@ -268,7 +272,7 @@ p {
     width: auto;
     border-radius: 5px;
     box-shadow: var(--shadow-elevation-medium);
-    transform:rotateX(-45deg);
+    // transform:rotateX(-45deg);
     transition: height .2s, box-shadow .2s, transform .2s;
 
 

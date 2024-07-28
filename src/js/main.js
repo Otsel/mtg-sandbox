@@ -15,6 +15,16 @@ $('.card').each(function(){
 
 //UI actions
 
+// tooltips
+$('.menuItem').hover(function(){
+    var menuItemID = $(this).attr("id");
+    var tooltipID = "[aria-controls='" + menuItemID + "']";
+    $(tooltipID).css("opacity", "1");
+    $(this).on("mouseleave", function(){
+        $('.tooltip').css("opacity", "0");
+    });
+});
+
 //count number of status messages
 var statusCounter = 1;
 
@@ -55,6 +65,18 @@ $('#menuItem3').on('click', function(){
     }
     
 });
+
+//tap cards
+$('.playingCard').hover(function(){
+    var $this = $(this);
+    $(document).keydown(function(keyPressed) {
+        if (keyPressed.keyCode == 82) {
+            console.log("you pressed the R key");
+            $this.toggleClass('tapped');
+        }
+    });
+});
+
 //make cards draggable
 
 //drop the card on release
@@ -79,15 +101,7 @@ $('.playerHand').droppable({
     }
 });
 
-// tooltips
-$('.menuItem').hover(function(){
-    var menuItemID = $(this).attr("id");
-    var tooltipID = "[aria-controls='" + menuItemID + "']";
-    $(tooltipID).css("opacity", "1");
-    $(this).on("mouseleave", function(){
-        $('.tooltip').css("opacity", "0");
-    });
-});
+
 
 
 
