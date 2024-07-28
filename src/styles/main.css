@@ -61,11 +61,11 @@ h1 {
 @keyframes titleflip {
   0% {
     opacity: 0;
-    padding: 60px 0;
+    padding: 50px 0;
   }
   100% {
     opacity: 1;
-    padding: 60px 20px;
+    padding: 50px 20px;
   }
 }
 *.unselectable {
@@ -116,13 +116,13 @@ h1 {
 }
 .mainMenu .menuContainer .card:hover {
   background-color: #ffffff;
-  color: #216094;
+  color: #a912eb;
   cursor: pointer;
   padding: 30px 70px;
   transition: 0.4s;
 }
 .mainMenu .menuContainer .card:hover .title {
-  color: #216094;
+  color: #a912eb;
   transition: 0.4s;
 }
 .mainMenu .menuContainer .card .manaCost {
@@ -132,15 +132,22 @@ h1 {
   right: 10px;
 }
 .mainMenu .menuContainer .card .title {
+  position: absolute;
+  top: 3px;
+  left: 15px;
+  font-weight: 600;
+  font-size: 18px;
+}
+.mainMenu .menuContainer .card .cardArt {
   font-family: "Bona Nova SC", serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 28px;
+  font-size: 80px;
   border-color: #ffffff;
   border-width: 2px;
   border-style: solid;
   border-radius: 10px;
-  padding: 60px 20px;
+  padding: 50px 20px;
   margin: 4% -32%;
   width: 134%;
 }
@@ -150,7 +157,7 @@ h1 {
   font-style: normal;
   font-size: 18px;
   position: absolute;
-  top: 75%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -163,13 +170,13 @@ h1 {
 .mainMenu .menuContainer #card3 {
   animation: float 2s infinite ease-in-out 2s, flip 1s 1 ease 1.5s;
 }
-.mainMenu .menuContainer #title1 {
+.mainMenu .menuContainer #cardArt1 {
   animation: titleflip 1s 1 ease 0.5s;
 }
-.mainMenu .menuContainer #title2 {
+.mainMenu .menuContainer #cardArt2 {
   animation: titleflip 1s 1 ease 1s;
 }
-.mainMenu .menuContainer #title3 {
+.mainMenu .menuContainer #cardArt3 {
   animation: titleflip 1s 1 ease 1.5s;
 }
 

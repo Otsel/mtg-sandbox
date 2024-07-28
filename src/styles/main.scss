@@ -54,8 +54,8 @@ h1 {
 }
 
 @keyframes titleflip {
-    0% {opacity: 0; padding: 60px 0;}
-    100% {opacity: 1; padding:60px 20px;}
+    0% {opacity: 0; padding: 50px 0;}
+    100% {opacity: 1; padding: 50px 20px;}
 }
 
 // modular classes
@@ -117,14 +117,14 @@ h1 {
             transition: .4s;
             &:hover{
                 background-color:#ffffff;
-                color: #216094;
+                color: #a912eb;
                 cursor: pointer;
                 padding: 30px 70px;
                 transition: .4s;
 
                 .title{
                     // border-color:#216094;
-                    color: #216094;
+                    color: #a912eb;
                     transition: .4s;
                 }
             }
@@ -135,15 +135,22 @@ h1 {
                 right: 10px;
             }
             .title{
+                position: absolute;
+                top: 3px;
+                left: 15px;
+                font-weight: 600;
+                font-size: 18px;
+            }
+            .cardArt{
                 font-family: "Bona Nova SC", serif;
                 font-weight: 700;
                 font-style: normal;
-                font-size: 28px;
+                font-size: 80px;
                 border-color: #ffffff;
                 border-width: 2px;
                 border-style: solid;
                 border-radius: 10px;
-                padding: 60px 20px;
+                padding: 50px 20px;
                 //this is so jank please fix it later;
                 margin: 4% -32%;
                 width: 134%;
@@ -154,7 +161,7 @@ h1 {
                 font-style: normal;
                 font-size: 18px;
                 position: absolute;
-                top: 75%;
+                top: 80%;
                 left: 50%;
                 -ms-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
@@ -163,9 +170,9 @@ h1 {
         #card1{animation: float 2s infinite ease-in-out 1s, flip 1s 1 ease .5s;}
         #card2{animation: float 2s infinite ease-in-out 1.5s, flip 1s 1 ease 1s;}
         #card3{animation: float 2s infinite ease-in-out 2s, flip 1s 1 ease 1.5s;}
-        #title1{animation: titleflip 1s 1 ease .5s;}
-        #title2{animation: titleflip 1s 1 ease 1s;}
-        #title3{animation: titleflip 1s 1 ease 1.5s;}
+        #cardArt1{animation: titleflip 1s 1 ease .5s;}
+        #cardArt2{animation: titleflip 1s 1 ease 1s;}
+        #cardArt3{animation: titleflip 1s 1 ease 1.5s;}
     }
 }
 
