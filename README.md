@@ -1,6 +1,8 @@
 # MTG:SANDBOX
 A modernized Magic: the Gathering play-testing environment!
 
+[https://otsel.github.io/mtg-sandbox/](https://otsel.github.io/mtg-sandbox/)
+
 ## How to Run Locally
 
 MTG:Sandbox runs using browser-sync. Install with:
