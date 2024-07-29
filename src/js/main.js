@@ -189,6 +189,28 @@ function refreshCards(){
             // $(this).css("z-index", "1000");
         }
     });
+    //tap cards
+    $('.playingCard').hover(function(){
+        var $this = $(this);
+        $(document).keydown(function(keyPressed) {
+            if (keyPressed.keyCode == 82) {
+                $this.toggleClass('tapped');
+            }
+        });
+    });
+
+    //rotate cards
+    $('.playingCard').hover(function(){
+        var $this = $(this);
+        $(document).keydown(function(keyPressed) {
+            if (keyPressed.keyCode == 70) {
+                $this.toggleClass('flipping');
+                setTimeout(function() { 
+                    $this.removeClass('flipping');
+                }, 500);
+            }
+        });
+    });
 }
 
 $('.playerHand').droppable({

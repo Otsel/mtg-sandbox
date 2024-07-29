@@ -319,12 +319,10 @@ p {
   z-index: 1;
   height: 200px;
   width: auto;
-  left: 0;
-  top: 0;
   border-radius: 5px;
   box-shadow: var(--shadow-elevation-medium);
   cursor: grab;
-  transition: height 0.2s, box-shadow 0.2s, transform 0.2s, top 0.4s, left 0.4s;
+  transition: height 0.2s, box-shadow 0.2s, transform 0.2s;
   -moz-user-select: -moz-none;
   -webkit-user-select: none;
   user-select: none;
