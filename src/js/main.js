@@ -14,7 +14,7 @@ $('.card').each(function(){
 
 //Game functions
 
-var cardCount = 100;
+var cardCount = 60;
 $('.cardCounter').html(cardCount);
 
 
@@ -90,8 +90,7 @@ $('.playingCard').hover(function(){
     var $this = $(this);
     $(document).keydown(function(keyPressed) {
         if (keyPressed.keyCode == 70) {
-            console.log("you pressed the F key");
-            $this.addClass('flipping');
+            $this.toggleClass('flipping');
             setTimeout(function() { 
                 $this.removeClass('flipping');
             }, 500);
@@ -123,7 +122,7 @@ $('.playingCard').draggable({
         // $(this).css("z-index", "1000");
     }
 });
-// $('.playingCard').draggable();
+
 $('.playerHand').droppable({
     // accept: ".playingCard"
     drop: function( event, ui ) {

@@ -47,7 +47,7 @@ p {
       0.2px 28.9px 32.5px -1.8px hsl(var(--shadow-color) / 0.34),
       0.2px 43.9px 49.4px -2.1px hsl(var(--shadow-color) / 0.34),
       0.4px 64.7px 72.8px -2.5px hsl(var(--shadow-color) / 0.34);
-  }
+}
 
 // animations
 
@@ -90,6 +90,8 @@ p {
 
  .tapped {
     transform: rotate(90deg);
+    opacity: .5;
+    transition: opacity .2s;
  }
 
  .flipping {
@@ -332,20 +334,16 @@ p {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
     -webkit-user-select: none;
- 
-    /*
-      Introduced in IE 10.
-      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-    */
     -ms-user-select: none;
     user-select: none;
 
     &:hover {
         height: 250px;
         z-index: 2;
+        opacity: 1;
         box-shadow: var(--shadow-elevation-high);
         transform:rotateX(0deg);
-        transition: height .2s, box-shadow .2s, transform .2s;
+        transition: height .2s, box-shadow .2s, transform .2s, opacity .2s;
     }
 
     &.in-hand {

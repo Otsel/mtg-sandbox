@@ -99,6 +99,8 @@ p {
 
 .tapped {
   transform: rotate(90deg);
+  opacity: 0.5;
+  transition: opacity 0.2s;
 }
 
 .flipping {
@@ -317,18 +319,15 @@ p {
   transition: height 0.2s, box-shadow 0.2s, transform 0.2s;
   -moz-user-select: -moz-none;
   -webkit-user-select: none;
-  /*
-    Introduced in IE 10.
-    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-  */
   user-select: none;
 }
 .playingCard:hover {
   height: 250px;
   z-index: 2;
+  opacity: 1;
   box-shadow: var(--shadow-elevation-high);
   transform: rotateX(0deg);
-  transition: height 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition: height 0.2s, box-shadow 0.2s, transform 0.2s, opacity 0.2s;
 }
 .playingCard.in-hand {
   position: relative;
