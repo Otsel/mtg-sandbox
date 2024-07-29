@@ -12,6 +12,37 @@ $('.card').each(function(){
     }, 1500);
 });
 
+//Initialize sounds
+var rollover = new Howl({
+    src: ['../../src/audio/rollover1.ogg'],
+    volume: 0.15
+});
+var click = new Howl({
+    src: ['../../src/audio/click.ogg'],
+    volume: 0.5
+});
+var scoop = new Howl({
+    src: ['../../src/audio/scoop.ogg'],
+    volume: 0.5
+});
+var slap = new Howl({
+    src: ['../../src/audio/slap.ogg'],
+    volume: 0.25
+});
+
+function refreshSounds(){
+    $('.playingCard').on("mouseenter", function(){
+        rollover.play();
+    });
+
+    $('.playingCard').on("click", function(){
+        scoop.play();
+    });
+    $('.playingCard').on("mouseup", function(){
+        slap.play();
+    });
+}
+refreshSounds();
 //Game functions
 
 var cardCount = 60;
@@ -60,10 +91,36 @@ $('#menuItem3').on('click', function(){
     var statusID = "status"+statusCounter;
     var statusTarget ="#status"+(statusCounter-1);
     var statusMessage = "<div class='status' "+"id='"+statusID+"'>you drew 1 card</div>";
-    console.log(statusMessage);
-    console.log(statusTarget);
+    //count cards and change deck visuals/status messages to match
+    //please dear god make this more efficient in the future
+    if (cardCount == 5) {
+        $('.deck img:nth-child(5)').hide();
+    } else if (cardCount == 4) {
+        $('.deck img:nth-child(4)').hide();
+    } else if (cardCount == 3) {
+        $('.deck img:nth-child(3)').hide();
+    } else if (cardCount == 2) {
+        $('.deck img:nth-child(2)').hide();
+    } else if (cardCount == 1) {
+        $('.deck img:nth-child(1)').hide();
+        $('.cardCounter').hide();
+    } else if (cardCount == 0) {
+        if (statusCounter == 5) {
+            $(".status").remove();
+            $('.statusContainer').prepend("<div class='status' "+"id='"+statusID+"'>you are out of cards</div>");
+            statusCounter = 1;
+        } else {
+            $('.statusContainer').prepend("<div class='status' "+"id='"+statusID+"'>you are out of cards</div>");
+            statusCounter++;
+        }
+        return;
+    }
     cardCount--;
+    $('.playArea').prepend('<img class="playingCard ui-draggable ui-draggable-handle drawCard" src="../../src/img/default.jpg" alt="">');
+    $('.drawCard').removeClass('drawCard');
     $('.cardCounter').html(cardCount);
+    refreshCards();
+    refreshSounds();
     if (statusCounter == 5) {
         $(".status").remove();
         $('.statusContainer').prepend(statusMessage);
@@ -72,7 +129,7 @@ $('#menuItem3').on('click', function(){
         $('.statusContainer').prepend(statusMessage);
         statusCounter++;
     }
-    
+
 });
 
 //tap cards
@@ -122,6 +179,17 @@ $('.playingCard').draggable({
         // $(this).css("z-index", "1000");
     }
 });
+
+function refreshCards(){
+    $('.playingCard').draggable({
+        containment:"body", 
+        scroll: false,
+        drag: function (event, ui) {
+            // $(this).toggleClass( "dragging" );
+            // $(this).css("z-index", "1000");
+        }
+    });
+}
 
 $('.playerHand').droppable({
     // accept: ".playingCard"
