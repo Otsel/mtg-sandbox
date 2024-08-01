@@ -10,7 +10,15 @@
         "url": "https://github.com/Otsel/mtg-sandbox.git"
     },
     "dependencies": {
-        "browser-sync": "^3.0.2",
         "node": "^20.16.0"
+    },
+    "devDependencies": {
+        "browser-sync": "^3.0.2",
+        "gulp": "^5.0.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-connect-php": "^1.0.3",
+        "gulp-rename": "^2.0.0",
+        "gulp-sass": "^5.1.0",
+        "gulp-sourcemaps": "^3.0.0"
     }
 }

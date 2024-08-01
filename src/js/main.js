@@ -14,32 +14,30 @@ $('.card').each(function(){
 
 //Initialize sounds
 var rollover = new Howl({
-    src: ['../../src/audio/rollover1.ogg'],
+    src: ['../../src/audio/cardswipe2.wav'],
     volume: 0.15
 });
-var click = new Howl({
-    src: ['../../src/audio/click.ogg'],
-    volume: 0.5
-});
 var scoop = new Howl({
-    src: ['../../src/audio/scoop.ogg'],
-    volume: 0.5
+    src: ['../../src/audio/cardswipe1.wav'],
+    volume: 0.15
 });
 var slap = new Howl({
-    src: ['../../src/audio/slap.ogg'],
-    volume: 0.25
+    src: ['../../src/audio/snap.mp3'],
+    volume: 0.15
 });
 
 function refreshSounds(){
     $('.playingCard').on("mouseenter", function(){
         rollover.play();
     });
-
     $('.playingCard').on("click", function(){
         scoop.play();
     });
     $('.playingCard').on("mouseup", function(){
         slap.play();
+    });
+    $(".card").on("mouseenter", function(){
+        rollover.play();
     });
 }
 refreshSounds();
