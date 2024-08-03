@@ -20,13 +20,18 @@ async function getCard(url) {
     cardImageSmall = cardImageURI.large;
     cardBackID = result['card_back_id'];
     cardBackURL = "https://api.scryfall.com/cards/"+cardBackID;
+    console.log(cardBackURL);
+ 
 
     // getCardBack();
+
     console.log(cardID); // or use the result variable
     console.log(cardImageSmall);
 
 }
-getCard("https://api.scryfall.com/cards/named?fuzzy=xantcha sleeper agent");
+getCard("https://api.scryfall.com/cards/named?fuzzy=xantcha sleeper");
+
+
 
 async function getCardBack(cardBackURL) {
     const res = await fetch(cardBackURL) ;
@@ -38,8 +43,6 @@ async function getCardBack(cardBackURL) {
     console.log(cardBackImageURI);
     console.log(cardBackImageURL);
 }
-
-
 
 //main menu animations
 $('.card').each(function(){

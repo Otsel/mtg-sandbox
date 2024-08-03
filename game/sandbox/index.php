@@ -1,17 +1,3 @@
-<?php require "../../api/scryfall.php"; ?>
-<?php require "../../scryfallapi/Cards.php"; ?>
-<?php require "../../scryfallapi/Catalog.php"; ?>
-<?php require "../../scryfallapi/Rulings.php"; ?>
-<?php require "../../scryfallapi/ScryfallClient.php"; ?>
-<?php require "../../scryfallapi/Sets.php"; ?>
-<?php require "../../scryfallapi/Symbology.php"; ?>
-
-<?php //$burgeoning = CallAPI("GET","https://api.scryfall.com/cards/named?fuzzy=burgeoning", ""); ?>
-
-<?php //print $burgeoning["id"]; ?>
-
-<?php //$bravekin = getNamed("brave-kin duo"); echo $bravekin('fuzzy');?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,9 +75,9 @@
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" integrity="sha256-sw0iNNXmOJbQhYFuC9OF2kOlD5KQKe1y5lfBn4C9Sjg=" crossorigin="anonymous"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../../src/js/main.js" type="text/javascript"></script>
+
 
 </body>
 </html>

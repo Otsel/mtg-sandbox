@@ -356,7 +356,7 @@ p {
   position: absolute;
   height: 200px;
   width: auto;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: var(--shadow-elevation-medium);
 }
 .deck img:nth-child(1) {
