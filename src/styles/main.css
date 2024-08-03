@@ -218,6 +218,7 @@ p {
 }
 .mainMenu h1 {
   text-align: center;
+  margin-top: 100px;
 }
 .mainMenu a {
   color: #ffffff;
@@ -319,21 +320,22 @@ p {
   z-index: 1;
   height: 200px;
   width: auto;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: var(--shadow-elevation-medium);
   cursor: grab;
-  transition: height 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition: height 0.2s, box-shadow 0.2s, transform 0.2s, border-radius 0.2s;
   -moz-user-select: -moz-none;
   -webkit-user-select: none;
   user-select: none;
 }
 .playingCard:hover {
-  height: 250px;
+  height: 350px;
   z-index: 2;
   opacity: 1;
+  border-radius: 12px;
   box-shadow: var(--shadow-elevation-high);
   transform: rotateX(0deg);
-  transition: height 0.2s, box-shadow 0.2s, transform 0.2s, opacity 0.2s;
+  transition: height 0.2s, box-shadow 0.2s, transform 0.2s, opacity 0.2s border-radius 0.2s;
 }
 .playingCard.in-hand {
   position: relative;

@@ -223,6 +223,7 @@ p {
 
     h1 {
         text-align: center;
+        margin-top: 100px;
     }
     a{
         color: #ffffff;
@@ -331,11 +332,11 @@ p {
     z-index: 1;
     height: 200px;
     width: auto;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: var(--shadow-elevation-medium);
     cursor: grab;
     // transform:rotateX(-45deg);
-    transition: height .2s, box-shadow .2s, transform .2s;
+    transition: height .2s, box-shadow .2s, transform .2s, border-radius .2s;
     //make unselectable
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -344,12 +345,13 @@ p {
     user-select: none;
 
     &:hover {
-        height: 250px;
+        height: 350px;
         z-index: 2;
         opacity: 1;
+        border-radius: 12px;
         box-shadow: var(--shadow-elevation-high);
         transform:rotateX(0deg);
-        transition: height .2s, box-shadow .2s, transform .2s, opacity .2s;
+        transition: height .2s, box-shadow .2s, transform .2s, opacity .2s border-radius .2s;
     }
 
     &.in-hand {

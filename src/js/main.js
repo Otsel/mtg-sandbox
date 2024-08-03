@@ -1,6 +1,46 @@
 (function($) {
 console.log("loading javascript [SUCCESS]");
 
+//API
+let cardID = "null";
+let cardImageURI = "null";
+let cardImageSmall = "null";
+
+let cardBackID = "null";
+let cardBackURL = "null";
+let cardBackImageURI = "null";
+let cardBackImageURL = "null";
+
+
+async function getCard(url) {
+    const res = await fetch(url) ;
+    const result = await res.json();
+    cardID = result['id'];
+    cardImageURI = result['image_uris'];
+    cardImageSmall = cardImageURI.large;
+    cardBackID = result['card_back_id'];
+    cardBackURL = "https://api.scryfall.com/cards/"+cardBackID;
+
+    // getCardBack();
+    console.log(cardID); // or use the result variable
+    console.log(cardImageSmall);
+
+}
+getCard("https://api.scryfall.com/cards/named?fuzzy=xantcha sleeper agent");
+
+async function getCardBack(cardBackURL) {
+    const res = await fetch(cardBackURL) ;
+    const result = await res.json();
+    cardBackImageURI = result['image_uris'];
+    cardBackImageURL = cardBackImageURI.large;
+    
+    console.log(cardBackID);
+    console.log(cardBackImageURI);
+    console.log(cardBackImageURL);
+}
+
+
+
 //main menu animations
 $('.card').each(function(){
     var $this = $(this);
@@ -114,7 +154,7 @@ $('#menuItem3').on('click', function(){
         return;
     }
     cardCount--;
-    $('.playArea').prepend('<img class="playingCard ui-draggable ui-draggable-handle drawCard" src="../../src/img/default.jpg" alt="">');
+    $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageSmall + "' alt=''>");
     $('.drawCard').removeClass('drawCard');
     $('.cardCounter').html(cardCount);
     refreshCards();

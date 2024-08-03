@@ -1,3 +1,17 @@
+<?php require "../../api/scryfall.php"; ?>
+<?php require "../../scryfallapi/Cards.php"; ?>
+<?php require "../../scryfallapi/Catalog.php"; ?>
+<?php require "../../scryfallapi/Rulings.php"; ?>
+<?php require "../../scryfallapi/ScryfallClient.php"; ?>
+<?php require "../../scryfallapi/Sets.php"; ?>
+<?php require "../../scryfallapi/Symbology.php"; ?>
+
+<?php //$burgeoning = CallAPI("GET","https://api.scryfall.com/cards/named?fuzzy=burgeoning", ""); ?>
+
+<?php //print $burgeoning["id"]; ?>
+
+<?php //$bravekin = getNamed("brave-kin duo"); echo $bravekin('fuzzy');?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +39,7 @@
     <div class="topMenu">
         <div class="left">
             <div class="menuItemContainer">
-                <a href="../../index.html" class="menuItem" id="menuItem1"><i class="fa-solid fa-left-to-line "></i></a>
+                <a href="/" class="menuItem" id="menuItem1"><i class="fa-solid fa-left-to-line "></i></a>
                 <div class="tooltip" aria-controls="menuItem1">Go Back</div>
             </div>
             <!-- <div class="menuItemContainer">
