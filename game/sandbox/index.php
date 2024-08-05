@@ -163,6 +163,18 @@
 
             //UI actions
 
+            //prevent default context menu when right clicking cards
+            // $(this).bind("contextmenu",function(e){
+            //     console.log("no clicky");
+            //     e.preventDefault();
+            // }); 
+
+            $(this).on("contextmenu",function(e){
+                console.log("no clicky");
+                return false;   
+            }); 
+
+
             // tooltips
             $('.menuItem').hover(function(){
                 var menuItemID = $(this).attr("id");
