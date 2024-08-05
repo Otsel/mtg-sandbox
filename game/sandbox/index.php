@@ -44,7 +44,7 @@
         <div class="center">
             <form onsubmit="return false;">
                 <div><input id="cardSearchBox" type="text" placeholder="type a card name"></div>
-                <div><input type="submit" onclick="cardSearch();"></div>
+                <div><input id="searchButton" class="hide" type="submit" value="search" onclick="cardSearch();"></div>
         </div>
         <div class="right">
             <div class="statusContainer">
@@ -172,6 +172,22 @@
                     $('.tooltip').css("opacity", "0");
                 });
             });
+
+            //show/hide search button
+
+            $(document).on("keydown", function() {
+                if ($("#cardSearchBox").val()) {
+                    console.log("its doin stutffff");
+                    //show search button if search box has text
+                    $("#searchButton").removeClass("hide");
+                    $("#searchButton").addClass("show");
+                } else {
+                    //hide if box is empty
+                    $("#searchButton").addClass("hide");
+                    $("#searchButton").removeClass("show");
+                }
+            });
+
 
             //count number of status messages
             var statusCounter = 1;

@@ -143,7 +143,9 @@ p {
     }
 }
 .topMenu {
+    position: relative;
     padding-top: 10px;
+    z-index: 10000;
     .tooltip {
         // display: none;
         opacity: 0;
@@ -200,7 +202,7 @@ p {
 
     .center {
         text-align: center;
-        input[type="text"] {
+        #cardSearchBox {
             padding: 0 0 0 1em;
             height: 1.5em;
             width: 35%;
@@ -221,7 +223,7 @@ p {
                 transition: 0.2s;
             }
         }
-        input[type="submit"]{
+        #searchButton{
             padding: 1em;
             border-radius: 60px;
             outline: none;
@@ -240,6 +242,18 @@ p {
                 background-color: #333;
                 box-shadow: var(--shadow-elevation-medium);
                 transition: .2s;
+            }
+            &.show {
+                margin-top: 1em;
+                opacity: 1;
+                transition: .2s;
+                cursor: pointer;
+            }
+            &.hide {
+                margin-top: 0;
+                opacity: 0;
+                transition: .2s;
+                cursor: default;
             }
         }
     }
@@ -267,6 +281,7 @@ p {
     height: 100%;
 
     h1 {
+        position: relative;
         text-align: center;
         margin-top: 100px;
     }
