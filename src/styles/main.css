@@ -200,6 +200,56 @@ p {
   filter: drop-shadow(10px 10px 10px #a912eb);
   transition: 0.3s;
 }
+.topMenu .center {
+  text-align: center;
+}
+.topMenu .center input[type=text] {
+  padding: 0 0 0 1em;
+  height: 1.5em;
+  width: 35%;
+  font-size: 2em;
+  font-family: "Bona Nova SC", serif;
+  color: #3d3d3d;
+  border-radius: 50px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-elevation-low);
+  transition: 0.2s;
+}
+.topMenu .center input[type=text]::-moz-placeholder {
+  color: rgba(63, 63, 63, 0.2862745098);
+}
+.topMenu .center input[type=text]::placeholder {
+  color: rgba(63, 63, 63, 0.2862745098);
+}
+.topMenu .center input[type=text]:focus-visible {
+  border: none;
+  outline: none;
+  box-shadow: var(--shadow-elevation-medium);
+  height: 2em;
+  transition: 0.2s;
+}
+.topMenu .center input[type=submit] {
+  padding: 1em;
+  border-radius: 60px;
+  outline: none;
+  border: none;
+  margin-top: 1em;
+  background-color: #4d4d4d;
+  color: #fff;
+  font-family: "Bona Nova SC", serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-elevation-low);
+  transition: 0.2s;
+}
+.topMenu .center input[type=submit]:hover {
+  font-size: 1.4em;
+  background-color: #333;
+  box-shadow: var(--shadow-elevation-medium);
+  transition: 0.2s;
+}
 .topMenu .right {
   position: absolute;
   top: 10px;

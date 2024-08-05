@@ -198,6 +198,51 @@ p {
         }
     }
 
+    .center {
+        text-align: center;
+        input[type="text"] {
+            padding: 0 0 0 1em;
+            height: 1.5em;
+            width: 35%;
+            font-size: 2em;
+            font-family: "Bona Nova SC", serif;
+            color: #3d3d3d;
+            border-radius: 50px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow-elevation-low);
+            transition: 0.2s;
+            &::placeholder {color: #3f3f3f49;}
+            &:focus-visible{
+                border: none;
+                outline: none;
+                box-shadow: var(--shadow-elevation-medium);
+                height: 2em;
+                transition: 0.2s;
+            }
+        }
+        input[type="submit"]{
+            padding: 1em;
+            border-radius: 60px;
+            outline: none;
+            border: none;
+            margin-top: 1em;
+            background-color: #4d4d4d;
+            color: #fff;
+            font-family: "Bona Nova SC", serif;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: var(--shadow-elevation-low);
+            transition: .2s;
+            &:hover {
+                font-size: 1.4em;
+                background-color: #333;
+                box-shadow: var(--shadow-elevation-medium);
+                transition: .2s;
+            }
+        }
+    }
     .right {
         position: absolute;
         top: 10px;

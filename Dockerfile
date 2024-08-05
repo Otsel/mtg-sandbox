@@ -47,6 +47,22 @@ COPY . /var/www/html
 # https://github.com/docker-library/docs/tree/master/php#configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
+# Run as a non-privileged user
+# FROM node:18
+# RUN useradd -ms /bin/sh -u 1001 app
+# USER app
+
+# Install dependencies
+# WORKDIR /app
+# COPY package.json package-lock.json ./
+# RUN npm install
+
+# Copy source files into application directory
+COPY --chown=app:app . /app
 # Switch to a non-privileged user (defined in the base image) that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
+
+
 USER www-data
+
+

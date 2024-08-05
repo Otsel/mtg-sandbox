@@ -5,6 +5,7 @@ console.log("loading javascript [SUCCESS]");
 let cardID = "null";
 let cardImageURI = "null";
 let cardImageSmall = "null";
+let cardName = "xantcha"
 
 let cardBackID = "null";
 let cardBackURL = "null";
@@ -29,8 +30,12 @@ async function getCard(url) {
     console.log(cardImageSmall);
 
 }
-getCard("https://api.scryfall.com/cards/named?fuzzy=xantcha sleeper");
+getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
 
+// function cardSearch() {
+//     cardName = document.getElementById("cardSearch").value;
+//     getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
+// }
 
 
 async function getCardBack(cardBackURL) {
