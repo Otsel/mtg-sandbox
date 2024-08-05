@@ -208,7 +208,7 @@ p {
 .topMenu .center #cardSearchBox {
   padding: 0 0 0 1em;
   height: 1.5em;
-  width: 35%;
+  width: 25%;
   font-size: 2em;
   font-family: "Bona Nova SC", serif;
   color: #3d3d3d;
@@ -229,6 +229,7 @@ p {
   outline: none;
   box-shadow: var(--shadow-elevation-medium);
   height: 2em;
+  width: 35%;
   transition: 0.2s;
 }
 .topMenu .center #searchButton {

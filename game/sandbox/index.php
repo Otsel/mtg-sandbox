@@ -42,9 +42,10 @@
             </div>
         </div>
         <div class="center">
-            <form onsubmit="return false;">
+            <form onsubmit="return false;" autocomplete="off">
                 <div><input id="cardSearchBox" type="text" placeholder="type a card name"></div>
                 <div><input id="searchButton" class="hide" type="submit" value="search" onclick="cardSearch();"></div>
+            </form>
         </div>
         <div class="right">
             <div class="statusContainer">
