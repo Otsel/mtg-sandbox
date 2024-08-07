@@ -19,7 +19,7 @@
 <body style="background-image: linear-gradient(to left bottom, #d17be9, #c967e9, #bf51ea, #b538ea, #a912eb);">
     <div class="sidemenu">
         <p>Controls:</p>
-        <p>R to tap a card</p>
+        <p>T to tap a card</p>
         <p>F to flip a card</p>
     </div>
     <div class="topMenu">
@@ -315,7 +315,7 @@
             $('.playingCard').hover(function(){
                 var $this = $(this);
                 $(document).keydown(function(keyPressed) {
-                    if (keyPressed.keyCode == 82) {
+                    if (keyPressed.keyCode == 84) {
                         $this.toggleClass('tapped');
                     }
                 });
@@ -372,7 +372,7 @@
                 $('.playingCard').hover(function(){
                     var $this = $(this);
                     $(document).keydown(function(keyPressed) {
-                        if (keyPressed.keyCode == 82) {
+                        if (keyPressed.keyCode == 84) {
                             $this.toggleClass('tapped');
                         }
                     });

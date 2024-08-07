@@ -1,6 +1,6 @@
 {
     "name": "mtg-sandbox",
-    "version": "0.0.2",
+    "version": "0.2.0",
     "author": "Aaron Sonder <sonderaaron@gmail.com>",
     "scripts": {
         "dev": "browser-sync start --server --files 'src/styles/*.css' 'src/js/main.js' '*.html'"

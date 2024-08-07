@@ -46,6 +46,12 @@
             </div>
         </div>
     </div>
+    <div class="versionNumber">Pre Alpha 0.2.0</div>
+
+    <div class="menuItemContaine socialBadges">
+        <a href="https://patreon.com/otsel" target="_blank" id="menuItem1" class="menuItem"><i class="fa-brands fa-patreon"></i></a>
+        <div class="tooltip" aria-controls="menuItem1">Patweon :3</div>
+    </div>
 
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
