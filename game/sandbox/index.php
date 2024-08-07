@@ -44,7 +44,7 @@
         <div class="center">
             <form onsubmit="return false;" autocomplete="off">
                 <div><input id="cardSearchBox" type="text" placeholder="type a card name"></div>
-                <div><input id="searchButton" class="hide" type="submit" value="search" onclick="cardSearch();"></div>
+                <div><input id="searchButton" class="hide" type="submit" value="search" onclick=""></div>
             </form>
         </div>
         <div class="right">
@@ -84,24 +84,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- <script src="../../src/js/main.js" type="text/javascript"></script> -->
     <script type="text/javascript">
-        function cardSearch() {
-            var cardName = document.getElementById("cardSearchBox").value;
-            console.log(cardName);
-            getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
+        var rndInt = "null";
+        //math
+        function randomIntFromInterval(min, max) { // min and max included 
+            return Math.floor(Math.random() * (max - min + 1) + min);
         }
 
-        //API
+        var rndInt = randomIntFromInterval(0, 3);
+        console.log(rndInt);
+
+        // function cardSearch() {
+        //     var cardName = document.getElementById("cardSearchBox").value;
+        //     console.log(cardName);
+        //     getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
+        // }
+        
+        //init global variables
+
+        //this is the unique ID for the card on Scryfall
         let cardID = "null";
+        //array of image URLs
         let cardImageURI = "null";
+        //large size card image
         let cardImageSmall = "null";
+        //the general name of the card, used in fuzzy search
         let cardName = "xantcha"
 
+        //experimental double-face card parameters, will finish these later
         let cardBackID = "null";
         let cardBackURL = "null";
         let cardBackImageURI = "null";
         let cardBackImageURL = "null";
 
-
+        //API Call to Scryfall API using GET method, this gets the card using search parameters and stores the extraneous card info in existing variables
         async function getCard(url) {
             const res = await fetch(url) ;
             const result = await res.json();
@@ -111,7 +126,6 @@
             cardBackID = result['card_back_id'];
             cardBackURL = "https://api.scryfall.com/cards/"+cardBackID;
             console.log(cardBackURL);
-        
 
             // getCardBack();
 
@@ -125,6 +139,7 @@
         (function($) {
             // console.log("why isn't this fuckin workin");
         
+            
 
 
             //Initialize sounds
@@ -140,7 +155,7 @@
                 src: ['../../src/audio/snap.mp3'],
                 volume: 0.15
             });
-
+            //function to reapply sound related event listeners to entities created after page load
             function refreshSounds(){
                 $('.playingCard').on("mouseenter", function(){
                     rollover.play();
@@ -156,27 +171,22 @@
                 });
             }
             refreshSounds();
+
             //Game functions
 
             var cardCount = 60;
             $('.cardCounter').html(cardCount);
 
-
             //UI actions
 
-            //prevent default context menu when right clicking cards
-            // $(this).bind("contextmenu",function(e){
-            //     console.log("no clicky");
-            //     e.preventDefault();
-            // }); 
-
+            //prevent default context menu when right clicking
             $(this).on("contextmenu",function(e){
                 console.log("no clicky");
                 return false;   
             }); 
 
 
-            // tooltips
+            //tooltips
             $('.menuItem').hover(function(){
                 var menuItemID = $(this).attr("id");
                 var tooltipID = "[aria-controls='" + menuItemID + "']";
@@ -186,11 +196,22 @@
                 });
             });
 
-            //show/hide search button
-
+            //goofy search button messages
+            const searchButtonValues = [
+                "gimme one",
+                "this please",
+                "i take",
+                "give now"
+            ];
+            //choose random goofy search button message for this session
+            var searchButtonText = "null";
+            var rndNum = "null";
+            rndNum = randomIntFromInterval(0, 3);
+            searchButtonText = searchButtonValues[rndNum];
+            $("#searchButton").val(searchButtonText);
+            //show/hide search button depending on whether there are any characters in the search bar
             $(document).on("keydown", function() {
                 if ($("#cardSearchBox").val()) {
-                    console.log("its doin stutffff");
                     //show search button if search box has text
                     $("#searchButton").removeClass("hide");
                     $("#searchButton").addClass("show");
@@ -202,29 +223,29 @@
             });
 
 
-            //count number of status messages
+            //count number of status messagesm this is used to delete messages older than 5 in the status log
             var statusCounter = 1;
 
-            //draw 7
-            $('#menuItem2').on('click', function(){
-                $('#defaultStatus').remove();
-                var statusID = "status"+statusCounter;
-                var statusTarget ="#status"+(statusCounter-1);
-                var statusMessage = "<div class='status' "+"id='"+statusID+"'>you drew 7 cards</div>";
-                console.log(statusMessage);
-                console.log(statusTarget);
-                cardCount-=7;
-                $('.cardCounter').html(cardCount);
-                if (statusCounter == 5) {
-                    $(".status").remove();
-                    $('.statusContainer').prepend(statusMessage);
-                    statusCounter = 1;
-                } else {
-                    $('.statusContainer').prepend(statusMessage);
-                    statusCounter++;
-                }
+            //draw 7 -- deprecated
+            // $('#menuItem2').on('click', function(){
+            //     $('#defaultStatus').remove();
+            //     var statusID = "status"+statusCounter;
+            //     var statusTarget ="#status"+(statusCounter-1);
+            //     var statusMessage = "<div class='status' "+"id='"+statusID+"'>you drew 7 cards</div>";
+            //     console.log(statusMessage);
+            //     console.log(statusTarget);
+            //     cardCount-=7;
+            //     $('.cardCounter').html(cardCount);
+            //     if (statusCounter == 5) {
+            //         $(".status").remove();
+            //         $('.statusContainer').prepend(statusMessage);
+            //         statusCounter = 1;
+            //     } else {
+            //         $('.statusContainer').prepend(statusMessage);
+            //         statusCounter++;
+            //     }
                 
-            });
+            // });
 
             //draw 1
             $('#menuItem3').on('click', function(){
@@ -273,7 +294,24 @@
 
             });
 
-            //tap cards
+            $("#searchButton").on('click', function(){
+                cardName = document.getElementById("cardSearchBox").value;
+                console.log(cardName);
+                getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
+
+                setTimeout (function(){
+                    $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageSmall + "' alt=''>");
+                    $('.drawCard').removeClass('drawCard');
+                    refreshCards();
+                    refreshSounds();
+                    $("#cardSearchBox").val("");
+                    $("#searchButton").addClass("hide");
+                    $("#searchButton").removeClass("show");
+                }, 200);
+                
+            });
+
+            //tap cards by hovering the card and pressing R
             $('.playingCard').hover(function(){
                 var $this = $(this);
                 $(document).keydown(function(keyPressed) {
@@ -283,7 +321,7 @@
                 });
             });
 
-            //rotate cards
+            //flip cards by hovering the card and pressing F
             $('.playingCard').hover(function(){
                 var $this = $(this);
                 $(document).keydown(function(keyPressed) {
