@@ -174,8 +174,8 @@
 
             //Game functions
 
-            var cardCount = 60;
-            $('.cardCounter').html(cardCount);
+            // var cardCount = 60;
+            // $('.cardCounter').html(cardCount);
 
             //UI actions
 
@@ -278,6 +278,9 @@
                     return;
                 }
                 cardCount--;
+                cardName = getCardNameFromArray(deckList, cardCount);
+                console.log(cardName);
+                getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
                 $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageSmall + "' alt=''>");
                 $('.drawCard').removeClass('drawCard');
                 $('.cardCounter').html(cardCount);
@@ -342,6 +345,77 @@
             $('.deck').mouseleave(function(){
                 $('.cardCounter').css("opacity", "0");
             })
+
+            function listOccurrencesIndividually(input) {
+                // Split the input into lines and trim any extraneous whitespace
+                const lines = input.trim().split('\n');
+
+                // Initialize an empty array to hold the results
+                const resultArray = [];
+
+                // Iterate over each line in the input
+                for (const line of lines) {
+                    // Use a regular expression to match the number and the text
+                    const match = line.match(/^(\d+)\s(.+)$/);
+                    if (match) {
+                        const count = parseInt(match[1], 10);
+                        const text = match[2];
+
+                        // Add each occurrence individually to the result array
+                        for (let i = 0; i < count; i++) {
+                            resultArray.push({ cardName: text});
+                        }
+                    }
+                }
+
+                return resultArray;
+            }
+
+// Decklist
+const input = `
+1 Azure Beastbinder
+2 Cruel Somnophage
+4 Gnawing Vermin
+4 Hollow Marauder
+4 Huskburster Swarm
+4 Invasion of Amonkhet
+9 Island
+2 Lord Skitter, Sewer King
+2 Persistent Marshstalker
+4 Pile On
+4 Restless Reef
+4 Shoreline Looter
+11 Swamp
+2 Tidecaller Mentor
+3 Vren, the Relentless
+`;
+
+            const deckList = listOccurrencesIndividually(input);
+            console.log(deckList);
+
+            //Set deck counter based on how many cards in deck
+            var cardCount = deckList.length;
+            $('.cardCounter').html(cardCount);
+
+            function getCardNameFromArray(arr, position) {
+                // Validate the input position
+                if (position < 1 || position > arr.length) {
+                    throw new Error('Position out of range');
+                }
+
+                // Retrieve the object at the specified position (1-based index)
+                const object = arr[position - 1];
+
+                // Ensure the object has the "cardName" property
+                if (!object || !object.hasOwnProperty('cardName')) {
+                    throw new Error('Object does not have "cardName" property');
+                }
+
+                // Store the "cardName" in a variable
+                const cardName = object.cardName;
+                return cardName;
+            }
+
 
             //make cards draggable
 
