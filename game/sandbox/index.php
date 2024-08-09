@@ -108,7 +108,7 @@
         //large size card image
         let cardImageSmall = "null";
         //the general name of the card, used in fuzzy search
-        let cardName = "xantcha"
+        let cardName = "null"
 
         //experimental double-face card parameters, will finish these later
         let cardBackID = "null";
@@ -133,8 +133,7 @@
             console.log(cardImageSmall);
 
         }
-        getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
-
+        
         //begin jquery
         (function($) {
             // console.log("why isn't this fuckin workin");
@@ -225,7 +224,7 @@
 
             //count number of status messagesm this is used to delete messages older than 5 in the status log
             var statusCounter = 1;
-
+            var cardDrawCounter = 0;
             //draw 7 -- deprecated
             // $('#menuItem2').on('click', function(){
             //     $('#defaultStatus').remove();
@@ -278,7 +277,8 @@
                     return;
                 }
                 cardCount--;
-                cardName = getCardNameFromArray(deckList, cardCount);
+                cardName = getCardNameFromArray(deckList, cardDrawCounter);
+                cardDrawCounter++;
                 console.log(cardName);
                 getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
                 $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageSmall + "' alt=''>");
@@ -297,6 +297,7 @@
 
             });
 
+            
             $("#searchButton").on('click', function(){
                 cardName = document.getElementById("cardSearchBox").value;
                 console.log(cardName);
@@ -416,6 +417,30 @@ const input = `
                 return cardName;
             }
 
+            //function to shuffle the deck
+            function shuffle(array) {
+                let currentIndex = array.length;
+
+                // While there cards left to shuffle
+                while (currentIndex != 0) {
+
+                    // Pick a rando card
+                    let randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex--;
+
+                    // And swap it with the current card
+                    [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+                }
+            }
+
+            // Shuffle the deck on startup and log it to the console
+            shuffle(deckList);
+            console.log(deckList);
+            //
+            cardName = getCardNameFromArray(deckList, cardCount);
+            console.log(cardName);
+            getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
 
             //make cards draggable
 
