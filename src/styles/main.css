@@ -188,7 +188,7 @@ p {
 .topMenu .left .menuItemContainer {
   display: block;
   text-align: center;
-  margin: 0 30px;
+  margin: 0 20px;
 }
 .topMenu .left .menuItem {
   color: #ffffff;
@@ -395,6 +395,8 @@ p {
 
 .socialBadges {
   text-align: center;
+  display: flex;
+  flex-direction: row;
   position: absolute;
   right: 1.5em;
   bottom: 0em;

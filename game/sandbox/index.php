@@ -10,6 +10,13 @@
     |_|  |_|  |_|  \_____(_)_____/_/    \_\_| \_|_____/|____/ \____/_/ \_\ 
 
     -->
+        <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WBXTXGTK');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTG:Sandbox - Sandbox</title>
@@ -17,6 +24,10 @@
     <script src="https://kit.fontawesome.com/af7942068a.js" crossorigin="anonymous"></script>
 </head>
 <body style="background-image: linear-gradient(to left bottom, #d17be9, #c967e9, #bf51ea, #b538ea, #a912eb);">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBXTXGTK"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="sidemenu">
         <p>Controls:</p>
         <p>T to tap a card</p>
@@ -37,9 +48,14 @@
                 <div class="tooltip" aria-controls="menuItem3">Draw 1</div>
             </div>
             <div class="menuItemContainer">
+                <a href="mailto:otsel+9cvuika5vtush4olf5ux@boards.trello.com" target="_blank" id="menuItem5" class="menuItem"><i class="fa-solid fa-bug"></i></a>
+                <div class="tooltip" aria-controls="menuItem5">Report a Bug</div>
+            </div>
+            <div class="menuItemContainer">
                 <a href="#" class="menuItem" id="menuItem4"><i class="fa-solid fa-gear"></i></a>
                 <div class="tooltip" aria-controls="menuItem4">Settings</div>
             </div>
+            
         </div>
         <div class="center">
             <form onsubmit="return false;" autocomplete="off">
@@ -277,8 +293,8 @@
                     return;
                 }
                 cardCount--;
-                cardName = getCardNameFromArray(deckList, cardDrawCounter);
                 cardDrawCounter++;
+                cardName = getCardNameFromArray(deckList, cardDrawCounter);
                 console.log(cardName);
                 getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
                 $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageSmall + "' alt=''>");

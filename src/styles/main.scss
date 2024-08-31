@@ -182,7 +182,7 @@ p {
         .menuItemContainer{
             display: block;
             text-align: center;
-            margin: 0 30px;
+            margin: 0 20px;
         }
         .menuItem {
             color: #ffffff;
@@ -390,6 +390,8 @@ p {
 
 .socialBadges {
     text-align: center;
+    display: flex;
+    flex-direction: row;
     .tooltip {
         // display: none;
         opacity: 0;
