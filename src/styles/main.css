@@ -279,6 +279,7 @@ p {
 }
 
 .contextMenu {
+  opacity: 0;
   padding: 10px 0;
   border-radius: 10px;
   background-color: #333;
@@ -292,6 +293,7 @@ p {
   bottom: 250px;
   right: 50px;
   box-shadow: var(--shadow-elevation-medium);
+  transition: opacity 0.2s;
 }
 .contextMenu .menuItem {
   padding: 5px 5px;
@@ -477,19 +479,28 @@ p {
   border-radius: 8px;
   box-shadow: var(--shadow-elevation-medium);
   cursor: grab;
-  transition: height 0.2s, box-shadow 0.2s, transform 0.2s, border-radius 0.2s;
   -moz-user-select: -moz-none;
   -webkit-user-select: none;
   user-select: none;
 }
 .playingCard:hover {
-  height: 350px;
-  z-index: 2;
-  opacity: 1;
-  border-radius: 12px;
-  box-shadow: var(--shadow-elevation-high);
-  transform: rotateX(0deg);
   transition: height 0.2s, box-shadow 0.2s, transform 0.2s, opacity 0.2s border-radius 0.2s;
+  border: solid 5px #fff;
+  border-radius: 8px;
+  transform: translate(-5px, -5px);
+  transform-origin: center;
+}
+.playingCard:hover.tapped {
+  transform: rotate(90deg) translate(-5px, 5px);
+}
+.playingCard.selected {
+  border: solid 5px #dbff0d !important;
+  border-radius: 8px;
+  transform: translate(-5px, -5px);
+  transform-origin: center;
+}
+.playingCard.selected.tapped {
+  transform: rotate(90deg) translate(-5px, 5px);
 }
 .playingCard.in-hand {
   position: relative;
@@ -497,6 +508,16 @@ p {
 }
 .playingCard.in-hand:hover {
   z-index: 1;
+}
+
+.cardPreview {
+  position: absolute;
+  right: 60px;
+  top: 250px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: var(--shadow-elevation-high);
+  opacity: 0;
 }
 
 .deck {

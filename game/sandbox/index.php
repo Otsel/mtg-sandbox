@@ -29,26 +29,14 @@
                 <a href="/" class="menuItem" id="menuItem1"><i class="fa-solid fa-left-to-line "></i></a>
                 <div class="tooltip" aria-controls="menuItem1">Go Back</div>
             </div>
-            <!-- <div class="menuItemContainer">
-                <a href="#" class="menuItem" id="menuItem2"><i class="fa-solid fa-cards-blank"></i></a>
-                <div class="tooltip" aria-controls="menuItem2">Draw 7</div>
-            </div> -->
-            <!-- <div class="menuItemContainer">
-                <a href="#" class="menuItem" id="menuItem3"><i class="fa-solid fa-cards-blank"></i></a>
-                <div class="tooltip" aria-controls="menuItem3">Draw 1</div>
-            </div> -->
             <div class="menuItemContainer">
-                <a href="mailto:otsel+9cvuika5vtush4olf5ux@boards.trello.com" target="_blank" id="menuItem5" class="menuItem"><i class="fa-solid fa-bug"></i></a>
-                <div class="tooltip" aria-controls="menuItem5">Report a Bug</div>
+                <a href="mailto:otsel+9cvuika5vtush4olf5ux@boards.trello.com" target="_blank" id="menuItem2" class="menuItem"><i class="fa-solid fa-bug"></i></a>
+                <div class="tooltip" aria-controls="menuItem2">Report a Bug</div>
             </div>
             <div class="menuItemContainer">
-                <a href="#" class="menuItem" id="menuItem4"><i class="fa-solid fa-gear"></i></a>
-                <div class="tooltip" aria-controls="menuItem4">Settings</div>
+                <a href="#" class="menuItem" id="menuItem3"><i class="fa-solid fa-gear"></i></a>
+                <div class="tooltip" aria-controls="menuItem3">Settings</div>
             </div>
-            <!-- <div class="menuItemContainer">
-                <a href="#" class="menuItem" id="menuItem6"><i class="fa-solid fa-arrows-spin"></i></a>
-                <div class="tooltip" aria-controls="menuItem6">Shuffle</div>
-            </div> -->
         </div>
         <div class="center">
             <form onsubmit="return false;" autocomplete="off">
@@ -77,6 +65,8 @@
         <img class="playingCard in-hand" src="../../src/img/default.jpg" alt="">
         <img class="playingCard in-hand" src="../../src/img/default.jpg" alt="">
     </div> -->
+
+    <img class="cardPreview" src="../../src/img/default.jpg">
 
     <div class="deck unselectable">  
         <img class="" src="../../src/img/default.jpg" alt="">
@@ -189,12 +179,9 @@
                 return false;   
             }); 
 
-            //hide context menu by default
-            $('.contextMenu').hide();
-
             //hide context menu if any key is pressed
             $(document).keydown(function(){
-                $('.contextMenu').hide();
+                $('.contextMenu').css("opacity", "0");
             });
 
             //hide context menu on left click
@@ -203,7 +190,7 @@
                     return false;
                 } else {
                     setTimeout(function(){
-                        $('.contextMenu').hide();
+                        $('.contextMenu').css("opacity", "0");
                     }, 100);
                 }
             });
@@ -212,7 +199,7 @@
             $('.deck').on('mousedown', function(event){
                 var $this = $(this);
                 if (event.which === 3) {
-                    $('.contextMenu').show();
+                    $('.contextMenu').css("opacity", "1");
                     console.log('clicked');
                 }
             });
@@ -459,6 +446,30 @@ const input = `
                 statusUpdate("you shuffled your deck");
             });
 
+
+            //card previews
+            
+            $(document).on('click', ".playingCard", function(event){
+                event.preventDefault();
+                $this = $(this);
+                $currentCardImage = $this.attr("src");
+                $('.playingCard').removeClass('selected');
+                $('.cardPreview').attr("src",$currentCardImage);
+                $('.cardPreview').css("opacity", "1");
+                setTimeout(function(){
+                    $this.addClass('selected');
+                }, 1);
+            });
+
+            $(document).on('click', function(){
+                $('.playingCard').removeClass('selected');
+            });
+            
+            $(document).on('mouseleave', '.playingCard', function(event){
+                event.preventDefault();
+                $('.cardPreview').css("opacity", "0");
+            });
+
             //make cards draggable
 
             //drop the card on release
@@ -472,7 +483,7 @@ const input = `
                 drag: function (event, ui) {
                     // $(this).toggleClass( "dragging" );
                     // $(this).css("z-index", "1000");
-                }
+                },
             });
 
             function refreshCards(){

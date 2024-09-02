@@ -274,6 +274,7 @@ p {
 }
 
 .contextMenu {
+    opacity: 0;
     padding: 10px 0;
     border-radius: 10px;
     background-color: #333;
@@ -287,6 +288,7 @@ p {
     bottom: 250px;
     right: 50px;
     box-shadow: var(--shadow-elevation-medium);
+    transition: opacity 0.2s;
     .menuItem{
         padding: 5px 5px;
         &:hover {
@@ -488,7 +490,7 @@ p {
     box-shadow: var(--shadow-elevation-medium);
     cursor: grab;
     // transform:rotateX(-45deg);
-    transition: height .2s, box-shadow .2s, transform .2s, border-radius .2s;
+    // transition: height .2s, box-shadow .2s, transform .2s, border-radius .2s;
     //make unselectable
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -497,13 +499,25 @@ p {
     user-select: none;
 
     &:hover {
-        height: 350px;
-        z-index: 2;
-        opacity: 1;
-        border-radius: 12px;
-        box-shadow: var(--shadow-elevation-high);
-        transform:rotateX(0deg);
+        // height: 350px;
+        // z-index: 2;
+        // opacity: 1;
+        // border-radius: 12px;
+        // box-shadow: var(--shadow-elevation-high);
+        // transform:rotateX(0deg);
         transition: height .2s, box-shadow .2s, transform .2s, opacity .2s border-radius .2s;
+        border: solid 5px #fff;
+        border-radius: 8px;
+        transform: translate(-5px, -5px);
+        transform-origin: center;
+        &.tapped {transform: rotate(90deg) translate(-5px, 5px);}
+    }
+    &.selected{
+        border: solid 5px #dbff0d !important;
+        border-radius: 8px;
+        transform: translate(-5px, -5px);
+        transform-origin: center;
+        &.tapped {transform: rotate(90deg) translate(-5px, 5px);}
     }
 
     &.in-hand {
@@ -513,6 +527,16 @@ p {
             z-index: 1;
         }
     }
+}
+
+.cardPreview {
+    position: absolute;
+    right: 60px;
+    top: 250px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-elevation-high);
+    opacity: 0;
 }
 
 .deck {
