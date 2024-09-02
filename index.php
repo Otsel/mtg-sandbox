@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="versionNumber">Pre Alpha 0.2.0</div>
+    <div class="versionNumber">Pre Alpha 0.2.1</div>
 
     <div class="socialBadges">
         <div class="menuItemContainer">
