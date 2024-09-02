@@ -10,24 +10,14 @@
     |_|  |_|  |_|  \_____(_)_____/_/    \_\_| \_|_____/|____/ \____/_/ \_\ 
 
     -->
-        <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WBXTXGTK');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTG:Sandbox - Sandbox</title>
     <link rel="stylesheet" href="../../src/styles/main.css">
     <script src="https://kit.fontawesome.com/af7942068a.js" crossorigin="anonymous"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="43b7437d-291a-4e17-ba35-3b51637889a7"></script>
 </head>
 <body style="background-image: linear-gradient(to left bottom, #d17be9, #c967e9, #bf51ea, #b538ea, #a912eb);">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBXTXGTK"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <div class="sidemenu">
         <p>Controls:</p>
         <p>T to tap a card</p>
@@ -43,10 +33,10 @@
                 <a href="#" class="menuItem" id="menuItem2"><i class="fa-solid fa-cards-blank"></i></a>
                 <div class="tooltip" aria-controls="menuItem2">Draw 7</div>
             </div> -->
-            <div class="menuItemContainer">
+            <!-- <div class="menuItemContainer">
                 <a href="#" class="menuItem" id="menuItem3"><i class="fa-solid fa-cards-blank"></i></a>
                 <div class="tooltip" aria-controls="menuItem3">Draw 1</div>
-            </div>
+            </div> -->
             <div class="menuItemContainer">
                 <a href="mailto:otsel+9cvuika5vtush4olf5ux@boards.trello.com" target="_blank" id="menuItem5" class="menuItem"><i class="fa-solid fa-bug"></i></a>
                 <div class="tooltip" aria-controls="menuItem5">Report a Bug</div>
@@ -55,7 +45,10 @@
                 <a href="#" class="menuItem" id="menuItem4"><i class="fa-solid fa-gear"></i></a>
                 <div class="tooltip" aria-controls="menuItem4">Settings</div>
             </div>
-            
+            <!-- <div class="menuItemContainer">
+                <a href="#" class="menuItem" id="menuItem6"><i class="fa-solid fa-arrows-spin"></i></a>
+                <div class="tooltip" aria-controls="menuItem6">Shuffle</div>
+            </div> -->
         </div>
         <div class="center">
             <form onsubmit="return false;" autocomplete="off">
@@ -93,6 +86,13 @@
         <img class="" src="../../src/img/default.jpg" alt="">
         <div class="cardCounter">100</div>
     </div>
+    
+    <div class="contextMenu">
+            <div class="menuItem" id="drawOption">Draw</div>
+            <div class="menuItem" id="shuffleOption">Shuffle</div>
+            <div class="menuItem" id="sendToGraveyardOption">Send to graveyard</div>
+            <div class="menuItem" id="sendToExileOption">Send to exile</div>
+    </div>
 
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -100,14 +100,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- <script src="../../src/js/main.js" type="text/javascript"></script> -->
     <script type="text/javascript">
+
+        //init global variables
         var rndInt = "null";
-        //math
+        //get random integer
         function randomIntFromInterval(min, max) { // min and max included 
             return Math.floor(Math.random() * (max - min + 1) + min);
         }
-
-        var rndInt = randomIntFromInterval(0, 3);
-        console.log(rndInt);
 
         // function cardSearch() {
         //     var cardName = document.getElementById("cardSearchBox").value;
@@ -116,13 +115,13 @@
         // }
         
         //init global variables
-
+        let statusID = 0;
         //this is the unique ID for the card on Scryfall
         let cardID = "null";
         //array of image URLs
         let cardImageURI = "null";
         //large size card image
-        let cardImageSmall = "null";
+        let cardImageLarge = "null";
         //the general name of the card, used in fuzzy search
         let cardName = "null"
 
@@ -138,24 +137,20 @@
             const result = await res.json();
             cardID = result['id'];
             cardImageURI = result['image_uris'];
-            cardImageSmall = cardImageURI.large;
+            cardImageLarge = cardImageURI.large;
             cardBackID = result['card_back_id'];
             cardBackURL = "https://api.scryfall.com/cards/"+cardBackID;
-            console.log(cardBackURL);
+            // console.log(cardBackURL);
 
             // getCardBack();
 
-            console.log(cardID); // or use the result variable
-            console.log(cardImageSmall);
+            // console.log(cardID); // or use the result variable
+            // console.log(cardImageLarge);
 
         }
         
         //begin jquery
         (function($) {
-            // console.log("why isn't this fuckin workin");
-        
-            
-
 
             //Initialize sounds
             var rollover = new Howl({
@@ -187,21 +182,42 @@
             }
             refreshSounds();
 
-            //Game functions
-
-            // var cardCount = 60;
-            // $('.cardCounter').html(cardCount);
-
-            //UI actions
+            ////UI actions
 
             //prevent default context menu when right clicking
             $(this).on("contextmenu",function(e){
-                console.log("no clicky");
                 return false;   
             }); 
 
+            //hide context menu by default
+            $('.contextMenu').hide();
 
-            //tooltips
+            //hide context menu if any key is pressed
+            $(document).keydown(function(){
+                $('.contextMenu').hide();
+            });
+
+            //hide context menu on left click
+            $(document).on('mousedown', function(event){ 
+                if (event.which === 3) {
+                    return false;
+                } else {
+                    setTimeout(function(){
+                        $('.contextMenu').hide();
+                    }, 100);
+                }
+            });
+
+            //open context menu
+            $('.deck').on('mousedown', function(event){
+                var $this = $(this);
+                if (event.which === 3) {
+                    $('.contextMenu').show();
+                    console.log('clicked');
+                }
+            });
+
+            //tooltip handling
             $('.menuItem').hover(function(){
                 var menuItemID = $(this).attr("id");
                 var tooltipID = "[aria-controls='" + menuItemID + "']";
@@ -238,89 +254,32 @@
             });
 
 
-            //count number of status messagesm this is used to delete messages older than 5 in the status log
+            //count number of status messages this is used to delete messages older than 5 in the status log
             var statusCounter = 1;
             var cardDrawCounter = 0;
-            //draw 7 -- deprecated
-            // $('#menuItem2').on('click', function(){
-            //     $('#defaultStatus').remove();
-            //     var statusID = "status"+statusCounter;
-            //     var statusTarget ="#status"+(statusCounter-1);
-            //     var statusMessage = "<div class='status' "+"id='"+statusID+"'>you drew 7 cards</div>";
-            //     console.log(statusMessage);
-            //     console.log(statusTarget);
-            //     cardCount-=7;
-            //     $('.cardCounter').html(cardCount);
-            //     if (statusCounter == 5) {
-            //         $(".status").remove();
-            //         $('.statusContainer').prepend(statusMessage);
-            //         statusCounter = 1;
-            //     } else {
-            //         $('.statusContainer').prepend(statusMessage);
-            //         statusCounter++;
-            //     }
-                
-            // });
 
-            //draw 1
-            $('#menuItem3').on('click', function(){
-                $('#defaultStatus').remove();
-                var statusID = "status"+statusCounter;
-                var statusTarget ="#status"+(statusCounter-1);
-                var statusMessage = "<div class='status' "+"id='"+statusID+"'>you drew 1 card</div>";
-                //count cards and change deck visuals/status messages to match
-                //please dear god make this more efficient in the future
-                if (cardCount == 5) {
-                    $('.deck img:nth-child(5)').hide();
-                } else if (cardCount == 4) {
-                    $('.deck img:nth-child(4)').hide();
-                } else if (cardCount == 3) {
-                    $('.deck img:nth-child(3)').hide();
-                } else if (cardCount == 2) {
-                    $('.deck img:nth-child(2)').hide();
-                } else if (cardCount == 1) {
-                    $('.deck img:nth-child(1)').hide();
-                    $('.cardCounter').hide();
-                } else if (cardCount == 0) {
-                    if (statusCounter == 5) {
-                        $(".status").remove();
-                        $('.statusContainer').prepend("<div class='status' "+"id='"+statusID+"'>you are out of cards</div>");
+            //status messages handling
+            function statusUpdate(message) {
+                if (statusCounter == 5) {
+                        $('.status').remove();
+                        $('.statusContainer').prepend("<div class='status' "+"id='"+statusID+"'>" + message + "</div>");
                         statusCounter = 1;
                     } else {
-                        $('.statusContainer').prepend("<div class='status' "+"id='"+statusID+"'>you are out of cards</div>");
+                        $('.statusContainer').prepend("<div class='status' "+"id='"+statusID+"'>" + message + "</div>");
                         statusCounter++;
                     }
-                    return;
-                }
-                cardCount--;
-                cardDrawCounter++;
-                cardName = getCardNameFromArray(deckList, cardDrawCounter);
-                console.log(cardName);
-                getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
-                $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageSmall + "' alt=''>");
-                $('.drawCard').removeClass('drawCard');
-                $('.cardCounter').html(cardCount);
-                refreshCards();
-                refreshSounds();
-                if (statusCounter == 5) {
-                    $(".status").remove();
-                    $('.statusContainer').prepend(statusMessage);
-                    statusCounter = 1;
-                } else {
-                    $('.statusContainer').prepend(statusMessage);
-                    statusCounter++;
-                }
+                return;
+            }
 
-            });
 
-            
+            //pull card from search query on search button click
             $("#searchButton").on('click', function(){
                 cardName = document.getElementById("cardSearchBox").value;
                 console.log(cardName);
                 getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
 
                 setTimeout (function(){
-                    $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageSmall + "' alt=''>");
+                    $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageLarge + "' alt=''>");
                     $('.drawCard').removeClass('drawCard');
                     refreshCards();
                     refreshSounds();
@@ -331,7 +290,7 @@
                 
             });
 
-            //tap cards by hovering the card and pressing R
+            //tap cards by hovering the card and pressing T
             $('.playingCard').hover(function(){
                 var $this = $(this);
                 $(document).keydown(function(keyPressed) {
@@ -357,11 +316,40 @@
             //deck functions
             $('.deck').mouseenter(function(){
                 $('.cardCounter').css("opacity", "1");
-            })
+            });
 
             $('.deck').mouseleave(function(){
                 $('.cardCounter').css("opacity", "0");
-            })
+            });
+
+            //draw 1
+            $('#drawOption').on('click', function(){
+                $('#defaultStatus').remove();
+                var statusID = "status"+statusCounter;
+                var statusTarget ="#status"+(statusCounter-1);
+                //count cards and change deck visuals/status messages to match
+                //please dear god make this more efficient in the future
+                if (cardCount <= 5, cardCount > 1) {
+                    $('.deck img:nth-child('+ cardCount +')').hide();
+                } else if (cardCount == 1) {
+                    $('.deck img:nth-child(1)').hide();
+                    $('.cardCounter').hide();
+                } else if (cardCount == 0) {
+                    statusUpdate("you are out of cards");
+                }
+                cardCount--;
+                cardDrawCounter++;
+                cardName = getCardNameFromArray(deckList, cardDrawCounter);
+                console.log(cardName);
+                getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
+                $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageLarge + "' alt=''>");
+                $('.drawCard').removeClass('drawCard');
+                $('.cardCounter').html(cardCount);
+                refreshCards();
+                refreshSounds();
+                statusUpdate("you drew 1 card");
+            });
+
 
             function listOccurrencesIndividually(input) {
                 // Split the input into lines and trim any extraneous whitespace
@@ -408,10 +396,10 @@ const input = `
 `;
 
             const deckList = listOccurrencesIndividually(input);
-            console.log(deckList);
+            // console.log(deckList);
 
             //Set deck counter based on how many cards in deck
-            var cardCount = deckList.length;
+            let cardCount = deckList.length;
             $('.cardCounter').html(cardCount);
 
             function getCardNameFromArray(arr, position) {
@@ -452,11 +440,24 @@ const input = `
 
             // Shuffle the deck on startup and log it to the console
             shuffle(deckList);
-            console.log(deckList);
-            //
+            // console.log(deckList);
+            //get top card of deck ready for next draw
             cardName = getCardNameFromArray(deckList, cardCount);
-            console.log(cardName);
+            // console.log(cardName);
             getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
+
+            // Shuffle the deck by clicking shuffle
+            $('#shuffleOption').click(function(){
+                //shuffle deck array
+                shuffle(deckList);
+                // console.log(deckList);
+                //get top card of deck ready for next draw
+                cardName = getCardNameFromArray(deckList, cardCount);
+                // console.log(cardName);
+                getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
+                //send status message to log
+                statusUpdate("you shuffled your deck");
+            });
 
             //make cards draggable
 

@@ -278,6 +278,30 @@ p {
   color: #ffffff;
 }
 
+.contextMenu {
+  padding: 10px 0;
+  border-radius: 10px;
+  background-color: #333;
+  height: auto;
+  width: 250px;
+  font-family: "Bona Nova SC", serif;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: #ffffff;
+  position: absolute;
+  bottom: 250px;
+  right: 50px;
+  box-shadow: var(--shadow-elevation-medium);
+}
+.contextMenu .menuItem {
+  padding: 5px 5px;
+}
+.contextMenu .menuItem:hover {
+  color: #333;
+  background-color: #fff;
+  cursor: pointer;
+}
+
 .mainMenu {
   width: 100%;
   height: 100%;
@@ -397,10 +421,14 @@ p {
   text-align: center;
   display: flex;
   flex-direction: row;
-  position: absolute;
-  right: 1.5em;
-  bottom: 0em;
+  right: -82%;
+  bottom: 20%;
   font-size: 60px;
+  position: relative;
+}
+.socialBadges .menuItemContainer {
+  display: block;
+  text-align: center;
 }
 .socialBadges .tooltip {
   opacity: 0;

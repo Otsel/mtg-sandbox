@@ -183,6 +183,7 @@ p {
             display: block;
             text-align: center;
             margin: 0 20px;
+            // width: 95px;
         }
         .menuItem {
             color: #ffffff;
@@ -269,6 +270,30 @@ p {
         font-weight: 700;
         font-size: 2em;
         color: #ffffff;
+    }
+}
+
+.contextMenu {
+    padding: 10px 0;
+    border-radius: 10px;
+    background-color: #333;
+    height: auto;
+    width: 250px;
+    font-family: "Bona Nova SC", serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: #ffffff;
+    position: absolute;
+    bottom: 250px;
+    right: 50px;
+    box-shadow: var(--shadow-elevation-medium);
+    .menuItem{
+        padding: 5px 5px;
+        &:hover {
+            color: #333;
+            background-color: #fff;
+            cursor: pointer;
+        }
     }
 }
 
@@ -392,6 +417,16 @@ p {
     text-align: center;
     display: flex;
     flex-direction: row;
+    right: -82%;
+    bottom: 20%;
+    font-size: 60px;
+    position: relative;
+    .menuItemContainer{
+        display: block;
+        text-align: center;
+        // margin: 0 20px;
+        // width: 95px;
+    }
     .tooltip {
         // display: none;
         opacity: 0;
@@ -418,10 +453,6 @@ p {
                 border-color: #222 transparent transparent transparent;    
         }
     }
-    position: absolute;
-    right: 1.5em;
-    bottom: 0em;
-    font-size: 60px;
     .menuItem {
         color: #ffffff;
         opacity: .5;
