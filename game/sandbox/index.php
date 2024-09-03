@@ -200,7 +200,6 @@
                 var $this = $(this);
                 if (event.which === 3) {
                     $('.contextMenu').css("opacity", "1");
-                    console.log('clicked');
                 }
             });
 
@@ -262,7 +261,7 @@
             //pull card from search query on search button click
             $("#searchButton").on('click', function(){
                 cardName = document.getElementById("cardSearchBox").value;
-                console.log(cardName);
+                // console.log(cardName);
                 getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
 
                 setTimeout (function(){
@@ -278,7 +277,7 @@
             });
 
             //tap cards by hovering the card and pressing T
-            $('.playingCard').hover(function(){
+            $(document).on('hover','.playingCard', function(){
                 var $this = $(this);
                 $(document).keydown(function(keyPressed) {
                     if (keyPressed.keyCode == 84) {
@@ -288,7 +287,7 @@
             });
 
             //flip cards by hovering the card and pressing F
-            $('.playingCard').hover(function(){
+            $(document).on('hover','.playingCard', function(){
                 var $this = $(this);
                 $(document).keydown(function(keyPressed) {
                     if (keyPressed.keyCode == 70) {
@@ -327,7 +326,7 @@
                 cardCount--;
                 cardDrawCounter++;
                 cardName = getCardNameFromArray(deckList, cardDrawCounter);
-                console.log(cardName);
+                // console.log(cardName);
                 getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
                 $('.playArea').prepend("<img class='playingCard ui-draggable ui-draggable-handle drawCard' src='" + cardImageLarge + "' alt=''>");
                 $('.drawCard').removeClass('drawCard');
