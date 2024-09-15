@@ -19,10 +19,16 @@ h1 {
     font-size: 8em;
     color: #ffffff;
 }
-p {
+h2 {
     font-family: "Bona Nova SC", serif;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 3em;
+    color: #ffffff;
+}
+p {
+    font-family: "Bona Nova SC", serif;
+    // font-weight: 700;
+    font-size: 1em;
     color: #ffffff;
 }
 
@@ -296,6 +302,89 @@ p {
             background-color: #fff;
             cursor: pointer;
         }
+    }
+}
+
+.modalMenu {
+    z-index: 1001;
+    padding: 50px;
+    text-align: center;
+    width: 700px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    box-shadow: var(--shadow-elevation-high);
+    transition: top 1s ease;
+
+    .fa-x {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        color: #222;
+        opacity: .5;
+        cursor: pointer;
+    }
+
+    p, h2{
+        color: #333;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    textarea {
+        opacity: .7;
+        border: none;
+        border-radius: 10px;
+        padding: 1em;
+        background-color: #222;
+        color: #fff;
+    }
+
+    input[type="submit"]{
+        margin: auto;
+        width: 200px;
+        padding: 1em;
+        border-radius: 60px;
+        outline: none;
+        border: none;
+        margin-top: 1em;
+        background-color: #4d4d4d;
+        color: #fff;
+        font-family: "Bona Nova SC", serif;
+        font-size: 1.2em;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: var(--shadow-elevation-low);
+        transition: .2s;
+        &:hover {
+            font-size: 1.4em;
+            background-color: #333;
+            box-shadow: var(--shadow-elevation-medium);
+            transition: .2s;
+        }
+        &.show {
+            margin-top: 1em;
+            opacity: 1;
+            transition: .2s;
+            cursor: pointer;
+        }
+        &.hide {
+            margin-top: 0;
+            opacity: 0;
+            transition: .2s;
+            cursor: default;
+        }
+    }
+
+    &.hide {
+        top: 200%;
     }
 }
 

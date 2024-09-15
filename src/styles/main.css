@@ -13,10 +13,16 @@ h1 {
   color: #ffffff;
 }
 
-p {
+h2 {
   font-family: "Bona Nova SC", serif;
   font-weight: 700;
-  font-size: 2em;
+  font-size: 3em;
+  color: #ffffff;
+}
+
+p {
+  font-family: "Bona Nova SC", serif;
+  font-size: 1em;
   color: #ffffff;
 }
 
@@ -302,6 +308,83 @@ p {
   color: #333;
   background-color: #fff;
   cursor: pointer;
+}
+
+.modalMenu {
+  z-index: 1001;
+  padding: 50px;
+  text-align: center;
+  width: 700px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  box-shadow: var(--shadow-elevation-high);
+  transition: top 1s ease;
+}
+.modalMenu .fa-x {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: #222;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.modalMenu p, .modalMenu h2 {
+  color: #333;
+}
+.modalMenu form {
+  display: flex;
+  flex-direction: column;
+}
+.modalMenu textarea {
+  opacity: 0.7;
+  border: none;
+  border-radius: 10px;
+  padding: 1em;
+  background-color: #222;
+  color: #fff;
+}
+.modalMenu input[type=submit] {
+  margin: auto;
+  width: 200px;
+  padding: 1em;
+  border-radius: 60px;
+  outline: none;
+  border: none;
+  margin-top: 1em;
+  background-color: #4d4d4d;
+  color: #fff;
+  font-family: "Bona Nova SC", serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-elevation-low);
+  transition: 0.2s;
+}
+.modalMenu input[type=submit]:hover {
+  font-size: 1.4em;
+  background-color: #333;
+  box-shadow: var(--shadow-elevation-medium);
+  transition: 0.2s;
+}
+.modalMenu input[type=submit].show {
+  margin-top: 1em;
+  opacity: 1;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.modalMenu input[type=submit].hide {
+  margin-top: 0;
+  opacity: 0;
+  transition: 0.2s;
+  cursor: default;
+}
+.modalMenu.hide {
+  top: 200%;
 }
 
 .mainMenu {

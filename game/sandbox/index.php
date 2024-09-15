@@ -37,6 +37,10 @@
                 <a href="#" class="menuItem" id="menuItem3"><i class="fa-solid fa-gear"></i></a>
                 <div class="tooltip" aria-controls="menuItem3">Settings</div>
             </div>
+            <div class="menuItemContainer">
+                <a href="#" class="menuItem" id="menuItem4"><i class="fa-solid fa-down-to-line"></i></a>
+                <div class="tooltip" aria-controls="menuItem4">Import Deck</div>
+            </div>
         </div>
         <div class="center">
             <form onsubmit="return false;" autocomplete="off">
@@ -84,6 +88,16 @@
             <div class="menuItem" id="sendToExileOption">Send to exile</div>
     </div>
 
+    <div class="modalMenu hide" id="deckImportModal">
+        <a href="#" class="closeModal"><i class="fa-solid fa-x"></i></a>
+        <h2>Import a deck</h2>
+        <form onsubmit="return false;" autocomplete="off">
+            <textarea id="deckImportText" rows="10" cols="50"></textarea>
+            <p>Copy and paste the import text from your favorite deckbuilder. <a href="#" target="_blank">Learn More</a></p>
+            <input id="deckImportButton" type="submit" value="import">
+        </form>
+    </div>
+
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" integrity="sha256-sw0iNNXmOJbQhYFuC9OF2kOlD5KQKe1y5lfBn4C9Sjg=" crossorigin="anonymous"></script>
@@ -113,7 +127,14 @@
         //large size card image
         let cardImageLarge = "null";
         //the general name of the card, used in fuzzy search
-        let cardName = "null"
+        let cardName = "null";
+
+        //list of cards in deck
+        const deckList = "null";
+
+        //number of cards in the deck
+        let cardCount = 0;
+        $('.cardCounter').html(cardCount);
 
         //experimental double-face card parameters, will finish these later
         let cardBackID = "null";
@@ -203,6 +224,16 @@
                 }
             });
 
+            //open deck import modalmenu
+            $('#menuItem4').click(function(){
+                $('#deckImportModal').toggleClass('hide');
+            });
+
+            //close modal button
+            $('.closeModal').click(function(){
+                $('.modalMenu').toggleClass('hide');
+            });
+
             //tooltip handling
             $('.menuItem').hover(function(){
                 var menuItemID = $(this).attr("id");
@@ -211,6 +242,25 @@
                 $(this).on("mouseleave", function(){
                     $('.tooltip').css("opacity", "0");
                 });
+            });
+
+            //import deck
+            $('#deckImportButton').click(function(){
+                input = document.getElementById("deckImportText").value;
+                console.log(input);
+                // listOccurrencesIndividually(input);
+                const deckList = listOccurrencesIndividually(input);
+                console.log(deckList);
+                //Set deck counter based on how many cards in deck
+                let cardCount = deckList.length;
+                $('.cardCounter').html(cardCount);
+                // Shuffle the deck on startup and log it to the console
+                shuffle(deckList);
+                console.log(deckList);
+                //get top card of deck ready for next draw
+                cardName = getCardNameFromArray(deckList, cardCount);
+                console.log(cardName);
+                getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
             });
 
             //goofy search button messages
@@ -363,30 +413,30 @@
             }
 
 // Decklist
-const input = `
-1 Azure Beastbinder
-2 Cruel Somnophage
-4 Gnawing Vermin
-4 Hollow Marauder
-4 Huskburster Swarm
-4 Invasion of Amonkhet
-9 Island
-2 Lord Skitter, Sewer King
-2 Persistent Marshstalker
-4 Pile On
-4 Restless Reef
-4 Shoreline Looter
-11 Swamp
-2 Tidecaller Mentor
-3 Vren, the Relentless
-`;
+// const input = `
+// 1 Azure Beastbinder
+// 2 Cruel Somnophage
+// 4 Gnawing Vermin
+// 4 Hollow Marauder
+// 4 Huskburster Swarm
+// 4 Invasion of Amonkhet
+// 9 Island
+// 2 Lord Skitter, Sewer King
+// 2 Persistent Marshstalker
+// 4 Pile On
+// 4 Restless Reef
+// 4 Shoreline Looter
+// 11 Swamp
+// 2 Tidecaller Mentor
+// 3 Vren, the Relentless
+// `;
 
-            const deckList = listOccurrencesIndividually(input);
+            // const deckList = listOccurrencesIndividually(input);
             // console.log(deckList);
 
             //Set deck counter based on how many cards in deck
-            let cardCount = deckList.length;
-            $('.cardCounter').html(cardCount);
+            // let cardCount = deckList.length;
+            // $('.cardCounter').html(cardCount);
 
             function getCardNameFromArray(arr, position) {
                 // Validate the input position
@@ -425,12 +475,12 @@ const input = `
             }
 
             // Shuffle the deck on startup and log it to the console
-            shuffle(deckList);
+            // shuffle(deckList);
             // console.log(deckList);
             //get top card of deck ready for next draw
-            cardName = getCardNameFromArray(deckList, cardCount);
+            // cardName = getCardNameFromArray(deckList, cardCount);
             // console.log(cardName);
-            getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
+            // getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
 
             // Shuffle the deck by clicking shuffle
             $('#shuffleOption').click(function(){

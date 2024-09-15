@@ -42,23 +42,16 @@
         const res = await fetch(cardBackURL) ;
         const result = await res.json();
         cardBackImageURI = result['image_uris'];
-        cardBackImageURL = cardBackImageURI.large;
-        
-        console.log(cardBackID);
-        console.log(cardBackImageURI);
-        console.log(cardBackImageURL);
+        cardBackImageURL =             $('.card').each(function(){
+            var $this = $(this);
+            $this.css("opacity", "0");
+            setTimeout(
+                function() 
+                {
+                    $this.css("opacity", "1");
+            }, 1500);
+        });BackImageURL);
     }
-    
-    //main menu animations
-    $('.card').each(function(){
-        var $this = $(this);
-        $this.css("opacity", "0");
-        setTimeout(
-            function() 
-            {
-                $this.css("opacity", "1");
-        }, 1500);
-    });
     
     //Initialize sounds
     var rollover = new Howl({

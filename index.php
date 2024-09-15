@@ -68,23 +68,16 @@
     <script type="text/javascript">
         //audio
         $(document).ready(function() {
-            // var rollover = new Howl({
-            //     src: ["../src/audio/cardswipe1.wav"],
-            //     volume: 0.5
-            // });
-            // var click = new Howl({
-            //     src: ["../src/audio/click.ogg"],
-            //     volume: 0.5
-            // });
-            // var scoop = new Howl({
-            //     src: ["../src/audio/cardswipe1.wav"],
-
-            // });
-            // var slap = new Howl({
-            //     src: ["../src/audio/snap.mp3"],
-            // });
-
-
+            //main menu animations
+            $('.card').each(function(){
+                var $this = $(this);
+                $this.css("opacity", "0");
+                setTimeout(
+                    function() 
+                    {
+                        $this.css("opacity", "1");
+                }, 1500);
+            });
         });
     </script>   
 </body>
