@@ -373,7 +373,7 @@
                 } else if (cardCount == 0) {
                     statusUpdate("you are out of cards");
                 }
-                cardCount--;
+                cardCount-=1;
                 cardDrawCounter++;
                 cardName = getCardNameFromArray(deckList, cardDrawCounter);
                 // console.log(cardName);
@@ -448,9 +448,9 @@
                 const object = arr[position - 1];
 
                 // Ensure the object has the "cardName" property
-                if (!object || !object.hasOwnProperty('cardName')) {
-                    throw new Error('Object does not have "cardName" property');
-                }
+                // if (!object || !object.hasOwnProperty('cardName')) {
+                //     throw new Error('Object does not have "cardName" property');
+                // }
 
                 // Store the "cardName" in a variable
                 const cardName = object.cardName;

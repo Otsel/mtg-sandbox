@@ -37,22 +37,6 @@
     //     getCard("https://api.scryfall.com/cards/named?fuzzy=" + cardName);
     // }
     
-    
-    async function getCardBack(cardBackURL) {
-        const res = await fetch(cardBackURL) ;
-        const result = await res.json();
-        cardBackImageURI = result['image_uris'];
-        cardBackImageURL =             $('.card').each(function(){
-            var $this = $(this);
-            $this.css("opacity", "0");
-            setTimeout(
-                function() 
-                {
-                    $this.css("opacity", "1");
-            }, 1500);
-        });BackImageURL);
-    }
-    
     //Initialize sounds
     var rollover = new Howl({
         src: ['../../src/audio/cardswipe2.wav'],
